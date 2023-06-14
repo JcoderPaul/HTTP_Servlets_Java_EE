@@ -1,0 +1,24 @@
+{
+  "id": 7777,
+
+  "startRow": {
+    "method": "GET",
+    "url": "www.ya.ru",
+    "version": "1.1"
+  },
+
+  "header": [
+    {
+      "name": "content-type",
+      "value": "text/html"
+    },
+    {
+      "name": "accept",
+      "value": "application/json"
+    }
+  ],
+
+  "body": {
+    "type": "text/plain"
+  }
+}
