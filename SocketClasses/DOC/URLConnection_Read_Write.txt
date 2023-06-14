@@ -1,0 +1,312 @@
+****** Чтение и запись при помощи URLConnection ******
+
+Класс URLConnection содержит множество методов, позволяющих обмениваться
+данными с URL-адресом по сети. URLConnection — это класс, ориентированный
+на HTTP; то есть многие из его методов полезны только при работе с
+URL-адресами HTTP.
+
+Тем не менее, большинство протоколов URL-адресов позволяют вам читать и
+писать в соединение. В этом разделе описываются обе функции.
+
+*** Чтение напрямую из URL ***
+
+После того, как мы успешно создали URL объект, мы можете вызвать метод
+его метод openStream(), чтобы получить поток, из которого мы можем
+прочитать содержимое заданного URL-адреса. Метод openStream() возвращает
+объект java.io.InputStream, поэтому чтение из URL-адреса так же просто,
+как чтение из входного потока.
+
+Следующая небольшая программа на Java использует openStream() для получения
+входного потока по URL-адресу http://www.oracle.com/. Затем он открывает
+BufferedReader во входном потоке и читает из BufferedReader, тем самым
+считывая URL-адрес. Все прочитанное копируется в стандартный поток вывода:
+
+*******************************************************************************
+import java.net.*;
+import java.io.*;
+
+public class URLReader {
+    public static void main(String[] args) throws Exception {
+
+        URL oracle = new URL("http://www.oracle.com/");
+        BufferedReader in = new BufferedReader(
+        new InputStreamReader(oracle.openStream()));
+
+        String inputLine;
+        while ((inputLine = in.readLine()) != null)
+            System.out.println(inputLine);
+        in.close();
+    }
+}
+*******************************************************************************
+
+Когда запустить этот код, то можно увидеть в командном окне команды HTML и текстовое
+содержимое из файла HTML, расположенного по адресу http://www.oracle.com/. Кроме того,
+программа может зависнуть или мы можем увидеть трассировку стека исключений. Если
+произойдет любое из последних двух событий, мы можем например установить прокси-хост,
+чтобы программа могла найти сервер Oracle.
+
+*** Чтение из URLConnection ***
+
+Следующая программа расписанная ниже выполняет ту же функцию, что и программа URLReader,
+показанная в разделе "Чтение напрямую из URL-адреса".
+
+Однако вместо того, чтобы получать входной поток непосредственно из
+URL-адреса, эта программа явно извлекает объект URLConnection и получает
+входной поток из соединения. Соединение открывается неявно вызовом
+getInputStream. Затем, как и URLReader, эта программа создает
+BufferedReader во входном потоке и читает из него. Комментариями выделена
+часть кода отличающая одну программу от другой:
+
+*******************************************************************************
+import java.net.*;
+import java.io.*;
+
+/* Естественно другое название программы */
+public class URLConnectionReader {
+    public static void main(String[] args) throws Exception {
+        URL oracle = new URL("http://www.oracle.com/");
+
+        /* Используется метод открытия соединения */
+        URLConnection yc = oracle.openConnection();
+        /*
+        Из уже открытого соединения берется входящий поток
+        обернутый в InputStreamReader, который в свою очередь
+        обернут в BufferedReader
+        */
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                                    yc.getInputStream()));
+
+        String inputLine;
+        while ((inputLine = in.readLine()) != null)
+            System.out.println(inputLine);
+        in.close();
+    }
+}
+*******************************************************************************
+
+Вывод этой программы идентичен выводу программы, которая открывает поток непосредственно
+из URL-адреса. Мы можем использовать любой способ для чтения из URL-адреса. Однако чтение
+из URLConnection вместо чтения непосредственно из URL-адреса может быть более полезным.
+Это связано с тем, что мы можем использовать объект URLConnection для других задач
+(например, для записи в URL) одновременно.
+
+Опять же, если программа зависает или мы видим сообщение об ошибке, возможно, нам придется
+установить прокси-хост, чтобы программа могла найти сервер Oracle.
+
+*** Запись в URLConnection ***
+
+Многие HTML-страницы содержат формы — текстовые поля и другие объекты графического интерфейса,
+позволяющие вводить данные для отправки на сервер. После того, как мы введем необходимую
+информацию и инициируем запрос, нажав кнопку, наш веб-браузер запишет данные в URL по сети.
+На другом конце сервер получает данные, обрабатывает их, а затем отправляет нам ответ (response),
+обычно в виде новой HTML-страницы.
+
+Многие из этих HTML-форм используют МЕТОД HTTP POST для отправки данных на сервер. Таким образом,
+запись в URL часто называется публикацией в URL. Сервер распознает запрос POST и считывает данные,
+отправленные от клиента.
+
+Чтобы программа на Java могла взаимодействовать с серверным процессом, она просто должна иметь
+возможность записи в URL, тем самым предоставляя данные серверу. Это можно сделать, выполнив
+следующие пошаговые действия:
+
+1. Создать URL.
+2. Получить объект URLConnection.
+3. Установить возможность вывода в URLConnection.
+4. Открыть подключение к ресурсу.
+5. Получить выходной поток из соединения.
+6. Записать в выходной поток.
+7. Закрыть выходной поток.
+
+Вот небольшой сервлет с именем ReverseServlet (или, если мы предпочитаем сценарий cgi-bin):
+https://docs.oracle.com/javase/tutorial/networking/urls/examples/ReverseServlet.java
+
+*******************************************************************************
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+import java.net.*;
+
+public class ReverseServlet extends HttpServlet {
+
+    private static String message = "Error during Servlet processing";
+
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) {
+        try {
+            int len = req.getContentLength();
+            byte[] input = new byte[len];
+
+            ServletInputStream sin = req.getInputStream();
+            int c, count = 0 ;
+            while ((c = sin.read(input, count, input.length-count)) != -1) {
+                count +=c;
+            }
+            sin.close();
+
+            String inString = new String(input);
+            int index = inString.indexOf("=");
+            if (index == -1) {
+                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                resp.getWriter().print(message);
+                resp.getWriter().close();
+                return;
+            }
+            String value = inString.substring(index + 1);
+
+            //decode application/x-www-form-urlencoded string
+            String decodedString = URLDecoder.decode(value, "UTF-8");
+
+            //reverse the String
+            String reverseStr = (new StringBuffer(decodedString)).reverse().toString();
+
+            // set the response code and write the response data
+            resp.setStatus(HttpServletResponse.SC_OK);
+            OutputStreamWriter writer = new OutputStreamWriter(resp.getOutputStream());
+
+            writer.write(reverseStr);
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            try{
+                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                resp.getWriter().print(e.getMessage());
+                resp.getWriter().close();
+            } catch (IOException ioe) {
+            }
+        }
+
+    }
+}
+*******************************************************************************
+
+Мы можем использовать этот сервлет для тестирования следующего примера программы.
+
+Сервлет, работающий в контейнере, читает из своего InputStream, переворачивает
+строку и записывает ее в свой OutputStream. Сервлет требует ввода в форме
+строка=строка_к_реверсу, где строка_к_реверсу — это строка, символы которой мы хотим
+отобразить в обратном порядке.
+
+Вот пример программы, которая запускает ReverseServlet по сети через URLConnection:
+
+*******************************************************************************
+import java.io.*;
+import java.net.*;
+
+public class Reverse {
+    public static void main(String[] args) throws Exception {
+
+        if (args.length != 2) {
+            System.err.println("Usage:  java Reverse "
+                + "http://<location of your servlet/script>"
+                + " string_to_reverse");
+            System.exit(1);
+        }
+
+        String stringToReverse = URLEncoder.encode(args[1], "UTF-8");
+
+        URL url = new URL(args[0]);
+        URLConnection connection = url.openConnection();
+        connection.setDoOutput(true);
+
+        OutputStreamWriter out = new OutputStreamWriter(
+                                         connection.getOutputStream());
+        out.write("string=" + stringToReverse);
+        out.close();
+
+        BufferedReader in = new BufferedReader(
+                                    new InputStreamReader(
+                                    connection.getInputStream()));
+        String decodedString;
+        while ((decodedString = in.readLine()) != null) {
+            System.out.println(decodedString);
+        }
+        in.close();
+    }
+}
+*******************************************************************************
+
+Давайте изучим программу и посмотрим, как она работает. Сначала программа обрабатывает
+свои аргументы командной строки:
+
+*******************************************************************************
+if (args.length != 2) {
+    System.err.println("Usage:  java Reverse "
+        + "http://<location of your servlet/script>"
+        + " string_to_reverse");
+    System.exit(1);
+}
+
+String stringToReverse = URLEncoder.encode(args[1], "UTF-8");
+*******************************************************************************
+
+Эти операторы гарантируют, что пользователь предоставит программе два и только два
+аргумента командной строки. Аргументами командной строки являются расположение
+ReverseServlet и строка, которая будет реверсирована. Командная строка может содержать
+пробелы или другие небуквенно-цифровые символы. Эти символы должны быть закодированы,
+поскольку строка обрабатывается на пути к серверу. Методы класса URLEncoder кодируют
+символы.
+
+Затем программа создает объект URL и устанавливает соединение, чтобы в него можно
+было писать:
+
+*******************************************************************************
+URL url = new URL(args[0]);
+URLConnection connection = url.openConnection();
+connection.setDoOutput(true);
+*******************************************************************************
+
+Затем программа создает выходной поток в соединении и открывает в нем OutputStreamWriter:
+
+*******************************************************************************
+OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream());
+*******************************************************************************
+
+Затем программа создает поток вывода в соединении и открывает в нем объект
+OutputStreamWriter: если URL не поддерживает вывод, метод getOutputStream
+выбрасывает исключение UnknownServiceException. Если URL поддерживает вывод,
+то этот метод возвращает поток вывода, который подключен к потоку ввода URL
+на стороне сервера — вывод клиента является вводом сервера.
+
+Далее, программа записывает необходимую информацию в выходной поток и
+закрывает поток:
+
+*******************************************************************************
+out.write("string=" + stringToReverse);
+out.close();
+*******************************************************************************
+
+Этот код записывает в выходной поток, используя метод *.write(). Итак, мы видим,
+что запись данных в URL так же проста, как запись данных в поток. Данные,
+записанные в выходной поток на стороне клиента, являются входными данными для
+сервлета на стороне сервера. Программа Reverse строит входные данные в форме,
+требуемой сценарием, добавляя string= к закодированной строке, которую необходимо
+инвертировать.
+
+Сервлет считывает введенную нами информацию, выполняет обратную операцию над
+строковым значением, а затем отправляет ее обратно нам. Теперь нам нужно прочитать
+строку, которую сервер отправил обратно. Программа Reverse делает это следующим
+образом:
+
+*******************************************************************************
+BufferedReader in = new BufferedReader(
+                            new InputStreamReader(
+                                  connection.getInputStream()));
+String decodedString;
+while ((decodedString = in.readLine()) != null) {
+    System.out.println(decodedString);
+}
+in.close();
+*******************************************************************************
+
+Если наш ReverseServlet расположен, к примеру по адресу:
+
+http://myservlets.ru/servlets/ReverseServlet,
+
+То при запуске программы Reverse необходимо указать в аргументах строку
+(с кавычками и пробелом):
+
+http://myservlets.ru/servlets/ReverseServlet "Разверни эту строку"
+
+*******************************************************************************
+Eng ver. https://docs.oracle.com/javase/tutorial/networking/urls/readingWriting.html
+*******************************************************************************

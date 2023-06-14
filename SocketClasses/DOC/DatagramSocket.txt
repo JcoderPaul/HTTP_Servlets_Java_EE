@@ -1,0 +1,145 @@
+****** Класс DatagramSocket ******
+
+public class DatagramSocket
+                extends Object
+                     implements Closeable
+
+Пакеты: java.lang.Object
+        java.net.DatagramSocket
+Все реализуемые интерфейсы: Closeable,
+                            AutoCloseable
+Известные подклассы: MulticastSocket
+
+Этот класс представляет собой сокет для отправки и получения пакетов дейтаграмм.
+
+Сокет дейтаграммы — это точка отправки или приема для службы доставки пакетов.
+Каждый пакет, отправленный или полученный через сокет дейтаграммы, адресуется
+и маршрутизируется индивидуально. Несколько пакетов, отправленных с одной машины
+на другую, могут маршрутизироваться по-разному и поступать в любом порядке.
+
+Там, где это возможно, вновь созданный DatagramSocket имеет включенную опцию
+сокета SO_BROADCAST, чтобы разрешить передачу широковещательных дейтаграмм.
+Чтобы получать широковещательные пакеты, DatagramSocket должен быть привязан
+к групповому адресу. В некоторых реализациях широковещательные пакеты также
+могут быть получены, когда DatagramSocket привязан к более конкретному адресу.
+
+Пример:
+
+******************************************************************************
+DatagramSocket s = new DatagramSocket(null);
+s.bind (new InetSocketAddress (8888));
+******************************************************************************
+
+то же что и:
+
+******************************************************************************
+DatagramSocket s = new DatagramSocket(8888);
+******************************************************************************
+
+В обоих случаях будет создан DatagramSocket, способный принимать широковещательные
+сообщения через UDP-порт 8888.
+
+Так же см. : DatagramPacket, DatagramChannel
+
+****** Конструкторы ******
+
+DatagramSocket() - Создает сокет дейтаграммы и привязывает его к любому
+                   доступному порту на локальном хост-компьютере.
+
+protected DatagramSocket(DatagramSocketImpl impl) - Создает несвязанный
+                   сокет дейтаграммы с указанным DatagramSocketImpl.
+
+DatagramSocket(int port) - Создает сокет дейтаграммы и привязывает его
+                           к указанному порту на локальном хост-компьютере.
+
+DatagramSocket(int port, InetAddress laddr) - Создает сокет дейтаграммы,
+                           привязанный к указанному локальному адресу.
+
+DatagramSocket(SocketAddress bindaddr) - Создает сокет дейтаграммы, связанный
+                                         с указанным локальным адресом сокета.
+
+****** Методы ******
+
+void bind(SocketAddress addr) - Привязывает этот DatagramSocket к
+                                определенному адресу и порту.
+
+void close() - Закрывает этот сокет дейтаграммы.
+
+void connect(InetAddress address, int port) - Соединяет сокет с удаленным
+                                              адресом для этого сокета.
+
+void connect(SocketAddress addr) - Соединяет этот сокет с адресом удаленного
+                                   сокета (IP-адрес + номер порта).
+
+void disconnect() - Отключает розетку.
+
+boolean getBroadcast() - Проверяет, включен ли SO_BROADCAST.
+
+DatagramChannel getChannel() - Возвращает уникальный объект DatagramChannel,
+                               связанный с этим сокетом дейтаграммы, если
+                               таковой имеется.
+
+InetAddress getInetAddress() - Возвращает адрес, к которому подключен этот сокет.
+
+InetAddress getLocalAddress() - Получает локальный адрес, к которому привязан сокет.
+
+int getLocalPort() - Возвращает номер порта на локальном хосте, к которому
+                     привязан этот сокет.
+
+SocketAddress getLocalSocketAddress() - Возвращает адрес конечной точки, к
+                                        которой привязан этот сокет.
+
+int getPort() - Возвращает номер порта, к которому подключен этот сокет.
+
+int getReceiveBufferSize() - Получите значение параметра SO_RCVBUF для этого
+                             DatagramSocket, то есть размер буфера, используемый
+                             платформой для ввода данных в этот DatagramSocket.
+
+SocketAddress getRemoteSocketAddress() - Возвращает адрес конечной точки, к которой
+                                         подключен этот сокет, или null, если он не
+                                         подключен.
+
+boolean getReuseAddress() - Проверяет, включен ли SO_REUSEADDR.
+
+int getSendBufferSize() - Получите значение параметра SO_SNDBUF для этого DatagramSocket,
+                          то есть размер буфера, используемый платформой для вывода на
+                          этом DatagramSocket.
+
+int getSoTimeout() - Получить настройку для SO_TIMEOUT.
+
+int getTrafficClass() - Получает класс трафика или тип обслуживания в заголовке
+                        IP-датаграммы для пакетов, отправленных из этого DatagramSocket.
+
+boolean isBound() - Возвращает состояние привязки сокета.
+
+boolean isClosed() - Возвращает, закрыт сокет или нет.
+
+boolean isConnected() - Возвращает состояние подключения сокета.
+
+void receive(DatagramPacket p) - Получает пакет дейтаграммы из этого сокета.
+
+void send(DatagramPacket p) - Отправляет пакет дейтаграммы из этого сокета.
+
+void setBroadcast(boolean on) - Включить/выключить SO_BROADCAST.
+
+static void setDatagramSocketImplFactory(DatagramSocketImplFactory fac) -
+Устанавливает фабрику реализации сокета дейтаграммы для приложения.
+
+void setReceiveBufferSize(int size) - Устанавливает параметр SO_RCVBUF в
+                                      указанное значение для этого DatagramSocket.
+
+void setReuseAddress(boolean on) - Включить/выключить параметр сокета SO_REUSEADDR.
+
+void setSendBufferSize(int size) - Устанавливает параметр SO_SNDBUF в указанное
+                                   значение для этого DatagramSocket.
+
+void setSoTimeout(int timeout) - Включить/отключить SO_TIMEOUT с указанным временем
+                                 ожидания в миллисекундах.
+
+void setTrafficClass(int tc) - Задает класс трафика или октет типа обслуживания в
+                               заголовке дейтаграммы IP для дейтаграмм, отправленных
+                               из этого DatagramSocket.
+
+*******************************************************************************************
+Более подробно см. https://docs.oracle.com/javase/8/docs/api/java/net/DatagramSocket.html
+*******************************************************************************************

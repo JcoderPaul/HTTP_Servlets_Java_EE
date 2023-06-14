@@ -1,0 +1,165 @@
+****** Класс HttpClient ******
+
+Модуль: java.net.http
+Пакет: java.net.http
+
+public abstract class HttpClient
+                         extends Object
+
+*** HTTP-клиент ***
+
+HttpClient можно использовать для отправки запросов и получения ответов.
+HttpClient создается с помощью компоновщика (builder). Билдер можно использовать
+для настройки состояния каждого клиента, например: предпочтительную версию
+протокола ( HTTP/1.1 или HTTP/2 ), следует ли следовать перенаправлениям,
+прокси-серверу, аутентификатору и т. д.
+
+После создания HttpClient является неизменным и можно использовать для отправки
+нескольких запросов.
+
+HttpClient предоставляет информацию о конфигурации и совместном использовании
+ресурсов для всех запросов, отправленных через него.
+
+BodyHandler должен предоставляться для каждого отправленного HttpRequest.
+BodyHandler определяет, как обрабатывать тело ответа, если таковое имеется.
+После получения HttpResponse доступны заголовки, код ответа и тело (обычно).
+Прочитаны ли байты тела ответа или нет, зависит от типа <T> тела ответа.
+
+Запросы могут быть отправлены как синхронно, так и асинхронно:
+
+- send(HttpRequest, BodyHandler) блокируется до тех пор, пока запрос не будет
+  отправлен и не будет получен ответ.
+- sendAsync(HttpRequest, BodyHandler) отправляет запрос и получает ответ асинхронно.
+  Метод sendAsync немедленно возвращается с CompletableFuture<HttpResponse>.
+  CompletableFuture завершается, когда ответ становится доступным. Возвращенный
+  CompletableFuture можно комбинировать различными способами для объявления
+  зависимостей между несколькими асинхронными задачами.
+
+Синхронный пример:
+************************************************************************************
+
+   HttpClient client = HttpClient.newBuilder()
+        .version(Version.HTTP_1_1)
+        .followRedirects(Redirect.NORMAL)
+        .connectTimeout(Duration.ofSeconds(20))
+        .proxy(ProxySelector.of(new InetSocketAddress("proxy.example.com", 80)))
+        .authenticator(Authenticator.getDefault())
+        .build();
+   HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+   System.out.println(response.statusCode());
+   System.out.println(response.body());
+
+************************************************************************************
+
+Асинхронный пример:
+************************************************************************************
+
+   HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create("https://foo.com/"))
+        .timeout(Duration.ofMinutes(2))
+        .header("Content-Type", "application/json")
+        .POST(BodyPublishers.ofFile(Paths.get("file.json")))
+        .build();
+   client.sendAsync(request, BodyHandlers.ofString())
+        .thenApply(HttpResponse::body)
+        .thenAccept(System.out::println);
+
+************************************************************************************
+
+Или схематично:
+
+************************************************************************************
+HttpRequest request = HttpRequest.newBuilder()
+	.method1()
+	.method2()
+	. ...
+	.methodN()
+    .build();
+************************************************************************************
+
+Класс HttpRequеst используется для описания http-request, что легко понять из его
+названия. Этот объект сам по себе ничего не делает, он только содержит разнообразную
+информацию по поводу http-запроса. Поэтому, для его создания тоже используется
+шаблон Builder. Где между вызовами методов newBuilder() и build() нужно вызвать нужные
+методы для конструирования объекта HttpRequest.
+
+*** Проверки безопасности ***
+
+Если присутствует менеджер безопасности, проверки безопасности выполняются методами
+отправки HTTP-клиента. Для доступа к целевому серверу и прокси-серверу, если он был
+настроен, требуется соответствующее URLPermission. Форма URLPermission, необходимая
+для доступа к прокси, имеет параметр метода «CONNECT» (для всех видов проксирования)
+и строку URL вида «socket://host:port», где host и port указывают адрес прокси.
+
+Примечание реализации:
+Если для HttpClient не задан явный исполнитель и установлен диспетчер безопасности,
+то исполнитель по умолчанию будет выполнять асинхронные и зависимые задачи в контексте,
+которому не предоставлены разрешения. Пользовательские издатели тела запроса,
+обработчики тела ответа, подписчики тела ответа и прослушиватели WebSocket, если
+они выполняют операции, требующие привилегий, должны делать это в соответствующем
+привилегированном контексте.
+
+****** Конструктор ******
+
+protected HttpClient() - создать HttpClient.
+
+****** Вложенные классы ******
+
+static interface HttpClient.Builder	- Конструктор (билдер) HTTP-клиентов.
+static class HttpClient.Redirect - Определяет политику автоматического перенаправления.
+static class HttpClient.Version	- Версия протокола HTTP.
+
+****** Методы ******
+
+abstract Optional<Authenticator> authenticator() - Возвращает необязательный элемент,
+                                                   содержащий набор аутентификаторов
+                                                   на этом клиенте.
+
+abstract Optional<Duration> connectTimeout() - Возвращает необязательный параметр,
+                                               содержащий продолжительность тайм-аута
+                                               подключения для этого клиента.
+
+abstract Optional<CookieHandler> cookieHandler() - Возвращает необязательный элемент,
+                                                   содержащий CookieHandler этого клиента.
+
+abstract Optional<Executor> executor() - Возвращает необязательный элемент, содержащий
+                                         Executor этого клиента.
+
+abstract HttpClient.Redirect followRedirects() - Возвращает политику перенаправления
+                                                 для этого клиента.
+
+static HttpClient.Builder newBuilder() - Создает новый билдер HttpClient.
+
+static HttpClient newHttpClient() - Возвращает новый HttpClient с настройками по умолчанию.
+
+WebSocket.Builder newWebSocketBuilder() - Создает новый билдер WebSocket (дополнительная операция).
+
+abstract Optional<ProxySelector> proxy() - Возвращает необязательный элемент, содержащий
+                                           ProxySelector, предоставленный этому клиенту.
+
+abstract <T> HttpResponse<T> send(HttpRequest request,
+                                  HttpResponse.BodyHandler<T> responseBodyHandler) -
+Отправляет данный запрос с помощью этого клиента, блокируя при необходимости получить ответ.
+
+abstract <T> CompletableFuture<HttpResponse<T>>	sendAsync(HttpRequest request,
+                                                          HttpResponse.BodyHandler<T> responseBodyHandler) -
+Отправляет данный запрос асинхронно, используя этот клиент с данным обработчиком тела ответа.
+
+abstract <T> CompletableFuture<HttpResponse<T>>	sendAsync(HttpRequest request,
+                                                          HttpResponse.BodyHandler<T> responseBodyHandler,
+                                                          HttpResponse.PushPromiseHandler<T> pushPromiseHandler) -
+Отправляет данный запрос асинхронно, используя этот клиент с данным обработчиком тела ответа и обработчиком push-обещаний.
+
+abstract SSLContext	sslContext() - Возвращает SSLContext этого клиента.
+
+abstract SSLParameters sslParameters() - Возвращает копию SSLParameters этого клиента.
+
+abstract HttpClient.Version	version() -	Возвращает предпочтительную версию протокола
+                                        HTTP для этого клиента.
+
+*****************************************************************************************************************
+Более подробно см.
+https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html
+https://docs.oracle.com/en/java/javase/12/docs/api/java.net.http/java/net/http/HttpRequest.html
+https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpResponse.BodyHandler.html
+*****************************************************************************************************************

@@ -1,0 +1,184 @@
+****** Class Socket ******
+
+Класс Socket – это фактически Socket-клиент, с помощью него мы
+можем послать сообщение некоторому сокету и получить ответ.
+
+**************************************************************************
+//Cоздаем сокет и обращаемся на локальный адрес, с портом 7777
+Socket clientSocket = new Socket("localhost", 7777);
+
+//Получаем OutputStream и отправляем запрос
+OutputStream outputStream = clientSocket.getOutputStream();
+PrintWriter out = new PrintWriter(outputStream, true);
+out.println("Hello bro!");
+out.flush();
+
+//Получаем InputStream и читаем ответ
+InputStream inputStream = clientSocket.getInputStream();
+BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+String answer = in.readLine();
+**************************************************************************
+
+****** public class Socket
+              extends Object
+                     implements Closeable ******
+
+Пакеты: java.lang.Object
+        java.net.Socket
+Все реализованные интерфейсы: Closeable,
+                              AutoCloseable
+Все известные подклассы: SSLSocket
+
+Этот класс реализует клиентские сокеты (также называемые просто «сокетами»).
+Сокет — это конечная точка для связи между двумя машинами. Фактическая работа
+сокета выполняется экземпляром класса SocketImpl. Приложение, изменив фабрику
+сокетов, создающую реализацию сокета, может настроить себя на создание сокетов,
+соответствующих локальному брандмауэру.
+
+Также см.: setSocketImplFactory(java.net.SocketImplFactory),
+           SocketImpl,
+           SocketChannel
+
+****** Конструкторы ******
+
+- Socket() - Создает несвязанный сокет с системным типом по умолчанию SocketImpl.
+
+- Socket(InetAddress address, int port) - Создает потоковый сокет и подключает его
+  к указанному номеру порта по указанному IP-адресу.
+
+- Socket(InetAddress host, int port, boolean stream) - Deprecated. - Вместо данного
+  конструктора используйте DatagramSocket для транспорта UDP.
+
+- Socket(InetAddress address, int port, InetAddress localAddr, int localPort) -
+  Создает сокет и подключает его к указанному удаленному адресу на указанном
+  удаленном порту.
+
+- Socket(Proxy proxy) - Создает несвязанный сокет, указывая тип прокси,
+  если он есть, который следует использовать независимо от любых других
+  настроек.
+
+- protected Socket(SocketImpl impl) - Создает несвязанный Socket с
+  указанным пользователем SocketImpl.
+
+- Socket(String host, int port) - Создает потоковый сокет и подключает
+  его к указанному номеру порта на указанном узле.
+
+- Socket(String host, int port, boolean stream) - Deprecated. - Вместо
+  этого конструктора лучше использовать используйте DatagramSocket для
+  транспорта UDP.
+
+- Socket(String host, int port, InetAddress localAddr, int localPort) - Создает
+  сокет и подключает его к указанному удаленному хосту на указанном удаленном
+  порту.
+
+****** Методы ******
+
+void bind(SocketAddress bindpoint) - Привязывает сокет к локальному адресу.
+
+void close() - Закрывает этот сокет.
+
+void connect(SocketAddress endpoint) - Соединяет этот сокет с сервером.
+
+void connect(SocketAddress endpoint, int timeout) - Подключает этот сокет к
+серверу с заданным значением времени ожидания.
+
+SocketChannel getChannel() - Возвращает уникальный объект SocketChannel,
+связанный с этим сокетом, если он есть.
+
+InetAddress getInetAddress() - Возвращает адрес, к которому подключен сокет.
+
+InputStream getInputStream() - Возвращает входной поток для этого сокета.
+
+boolean getKeepAlive() - Проверяет, включен ли SO_KEEPALIVE.
+
+InetAddress getLocalAddress() - Получает локальный адрес, к которому
+привязан сокет.
+
+int getLocalPort() - Возвращает номер локального порта, к которому
+привязан этот сокет.
+
+SocketAddress getLocalSocketAddress() - Возвращает адрес конечной
+точки, к которой привязан этот сокет.
+
+boolean getOOBInline() - Проверяет, включен ли SO_OOBINLINE.
+
+OutputStream getOutputStream() - Возвращает выходной поток для этого сокета.
+
+int getPort() - Возвращает номер удаленного порта, к которому подключен этот сокет.
+
+int getReceiveBufferSize() - Получает значение параметра SO_RCVBUF для этого сокета,
+то есть размер буфера, используемый платформой для ввода данных в этот сокет.
+
+SocketAddress getRemoteSocketAddress() - Возвращает адрес конечной точки, к которой
+подключен этот сокет, или null, если он не подключен.
+
+boolean getReuseAddress() - Проверяет, включен ли SO_REUSEADDR.
+
+int getSendBufferSize() - Получить значение параметра SO_SNDBUF
+для этого сокета, то есть размер буфера, используемый платформой
+для вывода на этот сокет.
+
+int getSoLinger() - Возвращает настройку для SO_LINGER.
+
+int getSoTimeout() - Возвращает настройку для SO_TIMEOUT.
+
+boolean getTcpNoDelay() - Проверяет, включен ли TCP_NODELAY.
+
+int getTrafficClass() - Получает класс трафика или тип
+обслуживания в заголовке IP для пакетов, отправленных из этого сокета.
+
+boolean isBound() - Возвращает состояние привязки сокета.
+
+boolean isClosed() - Возвращает закрытое состояние сокета.
+
+boolean isConnected() - Возвращает состояние подключения сокета.
+
+boolean isInputShutdown() - Возвращает, закрыта ли половина соединения
+сокета для чтения.
+
+boolean isOutputShutdown() - Возвращает, закрыта ли половина соединения сокета для записи.
+
+void sendUrgentData(int data) - Отправить один байт срочных данных на сокет.
+
+void setKeepAlive(boolean on) - Включить/выключить SO_KEEPALIVE.
+
+void setOOBInline(boolean on) - Включить/отключить SO_OOBINLINE
+(получение срочных данных TCP) По умолчанию этот параметр отключен,
+и срочные данные TCP, полученные на сокете, автоматически
+отбрасываются.
+
+void setPerformancePreferences(int connectionTime, int latency, int bandwidth) -
+Задает параметры производительности для этого сокета.
+
+void setReceiveBufferSize(int size) - Устанавливает для параметра SO_RCVBUF
+указанное значение для этого сокета.
+
+void setReuseAddress(boolean on) - Включить/выключить параметр сокета SO_REUSEADDR.
+
+void setSendBufferSize(int size) - Устанавливает для параметра SO_SNDBUF указанное
+значение для этого сокета.
+
+static void setSocketImplFactory(SocketImplFactory fac) - Задает фабрику реализации
+клиентских сокетов для приложения.
+
+void setSoLinger(boolean on, int linger) - Включить/отключить SO_LINGER с указанным
+временем задержки в секундах.
+
+void setSoTimeout(int timeout) - Включить/отключить SO_TIMEOUT с
+указанным временем ожидания в миллисекундах.
+
+void setTcpNoDelay(boolean on) - Включить/отключить TCP_NODELAY
+(отключить/включить алгоритм Нэгла).
+
+void setTrafficClass(int tc) - Устанавливает октет класса трафика
+или типа обслуживания в заголовке IP для пакетов, отправленных из этого сокета.
+
+void shutdownInput() - Помещает входной поток для этого сокета в «конец потока».
+
+void shutdownOutput() - Отключает выходной поток для этого сокета.
+
+String toString() - Преобразует этот сокет в строку.
+
+****************************************************************************************
+Полную версию см. https://docs.oracle.com/javase/8/docs/api/java/net/Socket.html
+****************************************************************************************
