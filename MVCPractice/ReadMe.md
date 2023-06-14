@@ -98,5 +98,5 @@ SQL скрипт находится во вспомогательной папк
 
 В данной ситуации, основная бизнес логика (например, валидация формы) работы приложения находится на локальном уровне Service, в глобальном разделе Model, т.е. мы попытались уйти от "толстого тупого контроллера", который очень сильно зависит от уровня Отображения - View и Модели - Model.
 
-Продолжение в разделе: AirportSimulatorTwo
+Продолжение в разделе: [AirportSimulatorTwo](https://github.com/JcoderPaul/HTTP_Servlets_Java_EE/tree/master/MVCPracticeAdvanced/src/AirportSimulatorTwo)
 
