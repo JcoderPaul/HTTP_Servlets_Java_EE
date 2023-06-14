@@ -1,0 +1,35 @@
+1. При запуске TomCat через startup.bat в конслои могут возникнуть проблемы 
+(у меня возникли), например, такие: 
+
+"JRE_HOME variable is not defined correctly. The environment variable is 
+needed to Run this program..."
+ 
+Для решения пришлось настраивать переменные среды (win 7):
+
+- Переменные среды пользователя:
+
+CATALINA_HOME=c:\Apache Software\Tomcat 10.0\ (path where your Apache Tomcat is)
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_25; (path where your JDK is)
+JRE_Home=C:\Program Files\Java\jre1.8.0_25; (path where your JRE is)
+
+- Системные переменные:
+
+CLASSPATH=%JAVA_HOME%\bin;%JRE_HOME%\bin;%CATALINA_HOME%\lib
+
+2. Так же, при попытке запуска shutdown.bat через консоль, сервер отказывался 
+выключаться пришлось коректировать файл server.xml, который сожно найти, например, 
+в папке:
+
+c:\Apache Software\Tomcat 10.0\conf\
+
+Далее в этом файле необходимо строку содержащую:
+
+<Server port="-1" shutdown="SHUTDOWN">
+
+заменить на:
+
+<Server port="${port.shutdown}" shutdown="SHUTDOWN">
+
+Для меня это сработало. 
+
+См. https://stackoverflow.com/
