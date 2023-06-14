@@ -1,0 +1,189 @@
+****** Annotation Type WebServlet ******
+
+jakarta.servlet.annotation.WebServlet
+или
+javax.servlet.http.HttpServlet
+jakarta.servlet.http.HttpServlet
+
+Аннотация, используемая для объявления сервлета.
+Эта аннотация обрабатывается веб контейнером во время развертывания, и
+соответствующий сервлет становится доступным по указанным шаблонам URL.
+
+*** ОПЦИОНАЛЬНЫЕ ПАРАМЕТРЫ ***
+
+boolean	asyncSupported - Указывает, поддерживает ли сервлет
+                         асинхронный режим работы.
+
+String description - Описание сервлета
+
+String displayName - Отображаемое имя сервлета
+
+WebInitParam[] initParams - Параметры инициализации сервлета
+
+String largeIcon - Большая иконка сервлета
+
+int loadOnStartup - Порядок загрузки сервлета при запуске
+
+String name - Имя сервлета
+
+String smallIcon - Маленькая иконка сервлета
+
+String[] urlPatterns - Шаблоны URL сервлета
+
+String[] value - Шаблоны URL сервлета
+
+*** СИНТАКСИС АННОТЦИИ @WebServlet ***
+
+*******************************************************************************
+@WebServlet(
+    attribute1=value1,
+    attribute2=value2,
+    ...
+)
+public class TheServlet extends HttpServlet {
+    // servlet code...
+}
+*******************************************************************************
+
+ПРИМЕЧАНИЕ: атрибуты displayName, description, smallIcon и largeIcon в основном
+используются инструментами, IDE или контейнерами сервлетов, они не влияют на
+работу сервлета.
+
+*** ПРИМЕРЫ АННОТАЦИИ @WebServlet ***
+
+*** Сервлет аннотируется только шаблоном URL ***
+
+*******************************************************************************
+import java.io.IOException;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+/*
+* или
+* import jakarta.servlet.annotation.WebServlet;
+* import jakarta.servlet.http.HttpServlet;
+* import jakarta.servlet.http.HttpServletRequest;
+* import jakarta.servlet.http.HttpServletResponse;
+*/
+
+@WebServlet("/processForm")
+public class MyServlet extends HttpServlet {
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+        response.getWriter().println("Hello");
+    }
+}
+*******************************************************************************
+
+Здесь сервлет MyServlet сопоставляется с шаблоном URL '/processForm'. При доступе
+к этому сервлету он вернет сообщение «Hello».
+
+*** Сервлет аннотируется несколькими шаблонами URL ***
+
+*******************************************************************************
+  import javax.servlet.annotation.WebServlet;
+  import javax.servlet.http.HttpServlet;
+
+  @WebServlet(urlPatterns = {"/sendFile", "/uploadFile"})
+  public class UploadServlet extends HttpServlet {
+      // implement servlet doPost() and doGet()...
+  }
+*******************************************************************************
+
+Здесь к сервлету UploadServlet можно получить доступ через два шаблона URL:
+'/sendFile' и '/uploadFile'.
+
+*** Объявляем сервлет с дополнительной информацией ***
+
+*******************************************************************************
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet(
+        name = "MyOwnServlet",
+        description = "This is my first annotated servlet",
+        urlPatterns = "/processServlet"
+)
+public class MyServlet extends HttpServlet {
+    // implement servlet doPost() and doGet()...
+}
+*******************************************************************************
+
+Здесь мы указываем имя и описание класса сервлета MyServlet.
+
+*** Объявляем сервлет с некоторыми параметрами инициализации ***
+
+*******************************************************************************
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.annotation.WebInitParam;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(
+        urlPatterns = "/imageUpload",
+        initParams =
+        {
+            @WebInitParam(name = "saveDir", value = "D:/FileUpload"),
+            @WebInitParam(name = "allowedTypes", value = "jpg,jpeg,gif,png")
+        }
+)
+public class ImageUploadServlet extends HttpServlet {
+
+    public void doGet(HttpServletRequest request,
+                      HttpServletResponse response)
+                                        throws IOException {
+        String saveDir = getInitParameter("saveDir");
+        String fileTypes = getInitParameter("allowedTypes");
+
+        PrintWriter writer = response.getWriter();
+
+        writer.println("saveDir = " + saveDir);
+        writer.println("fileTypes = " + fileTypes);
+    }
+}
+*******************************************************************************
+
+Здесь мы объявляем сервлет ImageUploadServlet, который сопоставляем с шаблоном
+URL '/imageUpload' и указываем два параметра инициализации 'saveDir' и 'allowTypes'.
+Метод doGet() извлекает значения этих параметров и распечатывает (возвращает) их
+клиенту.
+
+*** Объявляем сервлет с асинхронным режимом работы и порядком загрузки при запуске ***
+
+*******************************************************************************
+import javax.servlet.ServletConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet(
+        urlPatterns = "/myController",
+        loadOnStartup = 1,
+        asyncSupported = true
+)
+public class StartupServlet extends HttpServlet {
+
+    public void init(ServletConfig config) {
+        System.out.println("My servlet has been initialized");
+    }
+
+    // implement servlet doPost() and doGet()...
+}
+*******************************************************************************
+
+Здесь мы объявляем сервлет StartupServlet с loadOnStartup = 1 , и это означает,
+что этот сервлет автоматически инициализируется контейнером сервлетов при запуске
+сервера ( будет напечатано сообщение в методе init() ). Мы также указываем, что
+сервлет поддерживает асинхронный режим.
+
+******************************************************************************************
+См. полные версии:
+https://docs.oracle.com/javaee/7/api/javax/servlet/annotation/WebServlet.html
+или/и
+https://jakarta.ee/specifications/platform/8/apidocs/javax/servlet/annotation/webservlet
+******************************************************************************************

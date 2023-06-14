@@ -1,0 +1,37 @@
+****** Interface Part ******
+
+Библиотеки:
+javax.servlet.http
+jakarta.servlet.http
+
+Этот класс представляет элемент формы, полученный в рамках запроса POST multipart/form-data.
+
+*** Методы ***
+
+void delete() - Удаляет базовое хранилище для элемента файла, включая
+                удаление любого связанного временного файла на диске.
+
+String getContentType() - Получает тип содержимого этой части.
+
+String getHeader(String name) - Возвращает значение указанного заголовка
+                                mime в виде строки (String).
+
+Collection<String> getHeaderNames() - Получает имена заголовков этой части.
+
+Collection<String> getHeaders(String name) - Получает значения заголовка Part
+                                             с заданным именем.
+
+InputStream getInputStream() - Получает содержимое этой части как InputStream.
+
+String getName() - Получает имя этой части.
+
+long getSize() - Возвращает размер этого fille.
+
+String getSubmittedFileName() - Получает имя файла, указанное клиентом..
+
+void write(String fileName) - Удобный метод записи загруженного элемента на диск.
+
+********************************************************************************************
+См. более полный рариант: https://docs.oracle.com/javaee/7/api/javax/servlet/http/Part.html
+                          https://docs.oracle.com/javaee/6/tutorial/doc/docinfo.html
+********************************************************************************************

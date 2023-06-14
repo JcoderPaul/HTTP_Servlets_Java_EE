@@ -1,0 +1,124 @@
+****** ServletRequest ******
+
+Все известные субинтерфейсы: HttpServletRequest
+Все известные реализующие классы: HttpServletRequestWrapper,
+                                  ServletRequestWrapper
+
+Определяет объект для предоставления сервлету информации о клиентском
+запросе. Контейнер сервлета создает ServletRequest объект и передает
+его в качестве аргумента методу сервлета service.
+
+Объект ServletRequest предоставляет данные, включая имя и значения
+параметра, атрибуты и входной поток. Расширенные интерфейсы ServletRequest
+могут предоставлять дополнительные данные, специфичные для протокола,
+например, данные HTTP предоставляются файлом HttpServletRequest.
+
+*** МЕТОДЫ ***
+
+AsyncContext getAsyncContext() - Получает AsyncContext, который был создан или повторно
+                                 инициализирован самым последним вызовом startAsync() -
+                                 или startAsync(ServletRequest,ServletResponse) - по
+                                 этому запросу.
+
+Object getAttribute(String name) - Возвращает значение именованного атрибута в виде Object,
+                                   или nullе сли атрибут с заданным именем не существует.
+
+Enumeration<String>	getAttributeNames() - Возвращает, Enumeration содержащий имена атрибутов,
+                                          доступных для этого запроса.
+String getCharacterEncoding() - Возвращает имя кодировки символов, используемой в теле
+                                этого запроса.
+int getContentLength() - Возвращает длину в байтах тела запроса, доступного во входном потоке,
+                         или -1, если длина неизвестна.
+
+String	getContentType() - Возвращает MIME-тип тела запроса или, nullесли тип неизвестен.
+
+DispatcherType getDispatcherType() - Получает тип диспетчера этого запроса.
+
+ServletInputStream getInputStream() - Извлекает тело запроса в виде двоичных данных, используя
+                                      файл ServletInputStream.
+
+String getLocalAddr() - Возвращает адрес интернет-протокола (IP) - интерфейса, на который был
+                        получен запрос.
+
+Locale getLocale() - Возвращает предпочтительный вариант Locale, в котором клиент будет принимать
+                     содержимое, на основе заголовка Accept-Language.
+
+Enumeration<Locale>	getLocales() - Возвращает Enumeration объекты Locale, указывающие в порядке
+                                   убывания, начиная с предпочтительной локали, локали, приемлемые
+                                   для клиента, на основе заголовка Accept-Language.
+
+String getLocalName() - Возвращает имя хоста интерфейса Интернет-протокола (IP), на котором был
+                        получен запрос.
+
+int	getLocalPort() - Возвращает номер порта Интернет-протокола (IP) - интерфейса, на котором был
+                     получен запрос.
+
+String getParameter(String name) - Возвращает значение параметра запроса в виде String, или null
+                                   если параметр не существует.
+
+Map<String,String[]> getParameterMap() - Возвращает Map параметров этого запроса.
+
+Enumeration<String>	getParameterNames() - Возвращает Enumeration объекты String, содержащие имена
+                                          параметров, содержащихся в этом запросе.
+
+String[] getParameterValues(String name) - Возвращает массив String объектов, содержащий все значения,
+                                           которые имеет данный параметр запроса, или null если параметр
+                                           не существует.
+
+String getProtocol() - Возвращает имя и версию протокола, используемого в запросе, в формате
+                       protocol/majorVersion.minorVersion , например, HTTP/1.1.
+
+BufferedReader getReader() - Извлекает тело запроса в виде символьных данных, используя
+                             файл BufferedReader.
+
+String getRealPath(String path) - Устарело. Начиная с версии 2.1 Java Servlet API,
+                                  используйте ServletContext#getRealPath вместо этого.
+
+String getRemoteAddr() - Возвращает адрес интернет-протокола (IP) - клиента или последнего
+                         прокси-сервера, отправившего запрос.
+
+String getRemoteHost() - Возвращает полное имя клиента или последнего прокси-сервера,
+                         отправившего запрос.
+
+int getRemotePort() - Возвращает исходный порт интернет-протокола (IP) - клиента или
+                      последнего прокси-сервера, отправившего запрос.
+
+RequestDispatcher getRequestDispatcher(String path) - Возвращает RequestDispatcher объект, который
+                                                      действует как оболочка для ресурса,
+                                                      расположенного по заданному пути.
+
+String getScheme() - Возвращает имя схемы, использованной для выполнения этого запроса,
+                     например, http, https или ftp.
+
+String getServerName() - Возвращает имя хоста сервера, на который был отправлен запрос.
+
+int getServerPort() - Возвращает номер порта, на который был отправлен запрос.
+
+ServletContext getServletContext() - Получает контекст сервлета, которому последний раз был
+                                     отправлен этот ServletRequest.
+
+boolean isAsyncStarted() - Проверяет, был ли этот запрос переведен в асинхронный режим.
+
+boolean isAsyncSupported() - Проверяет, поддерживает ли этот запрос асинхронную работу.
+
+boolean isSecure() - Возвращает логическое значение, указывающее, был ли этот запрос выполнен
+                     с использованием защищенного канала, такого как HTTPS.
+
+void removeAttribute(String name) - Удаляет атрибут из этого запроса.
+
+void setAttribute(String name, Object o) - Сохраняет атрибут в этом запросе.
+
+void setCharacterEncoding(String env) - Переопределяет имя кодировки символов, используемое
+                                        в теле этого запроса.
+
+AsyncContext startAsync() - Переводит этот запрос в асинхронный режим и инициализирует его
+                            AsyncContext исходными (развернутыми) - объектами ServletRequest
+                            и ServletResponse.
+
+AsyncContext startAsync(ServletRequest servletRequest, ServletResponse servletResponse) - Переводит этот
+                            запрос в асинхронный режим и инициализирует его AsyncContext заданными объектами
+                            запроса и ответа.
+
+**************************************************************************************************************
+См. полную версию: https://docs.oracle.com/javaee/6/api/javax/servlet/ServletRequest.html
+**************************************************************************************************************
