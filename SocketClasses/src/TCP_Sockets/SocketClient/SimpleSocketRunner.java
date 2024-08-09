@@ -19,11 +19,8 @@ public class SimpleSocketRunner {
         try(Socket firstSocket = new Socket(inetAddress,7777);
             DataOutputStream outputStream = new DataOutputStream(firstSocket.getOutputStream());
             DataInputStream inputStream = new DataInputStream(firstSocket.getInputStream())){
-
-            /* Посылаем запрос к серверу */
-            outputStream.writeUTF("Hello my first SERVER!!!");
-            /* Получаем ответ от сервера, мы точно знаем, что это строка и мы ее ждем */
-            System.out.println("Response from SERVER: " + inputStream.readUTF());
+            outputStream.writeUTF("Hello my first SERVER!!!");    // Посылаем запрос к серверу 
+            System.out.println("Response from SERVER: " + inputStream.readUTF());    // Получаем ответ от сервера, мы точно знаем, что это строка и мы ее ждем
         }
         
         /*
