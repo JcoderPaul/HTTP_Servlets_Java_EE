@@ -68,6 +68,7 @@ import java.io.IOException;
 public class UserRegForm extends HttpServlet {
 
     private UserService userService = UserService.getInstance();
+    
     /*
     На doGet возвращаем *.jsp страничку на которой мы
     введем данные нашего пользователя и передадим эти
@@ -82,6 +83,7 @@ public class UserRegForm extends HttpServlet {
 
         req.getRequestDispatcher(JspPathHelper.getJspPath("jstl_img_reg_form")).forward(req,resp);
     }
+   
     /* На doPost возвращаем запрос */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws
