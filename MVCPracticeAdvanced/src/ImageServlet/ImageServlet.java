@@ -12,7 +12,9 @@ import java.io.InputStream;
 
 @WebServlet("/Image/*")
 public class ImageServlet extends HttpServlet {
+    
     private final ImageService imageService = ImageService.getInstance();
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         String requestUri = req.getRequestURI();
@@ -30,6 +32,7 @@ public class ImageServlet extends HttpServlet {
                     writeImage(image, resp);
                 }, () -> resp.setStatus(404));
     }
+    
     /*
     Метод позволяет передать наш файл (картинку) от сервера к пользователю,
     т.е. преобразовывает входящий поток байт в исходящий из сервлета поток
