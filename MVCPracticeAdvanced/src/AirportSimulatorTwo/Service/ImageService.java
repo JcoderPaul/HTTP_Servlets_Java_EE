@@ -11,13 +11,12 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.Optional;
 
-/*
-Делаем простой синглтон. Добавляем аннотацию с
-пустым конструктором, с приватным доступом.
-*/
+/* Делаем простой синглтон. Добавляем аннотацию с пустым конструктором, с приватным доступом. */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ImageService {
+    
     private static final ImageService INSTANCE = new ImageService();
+    
     /* Базовый путь для хранения файлов (картинок) */
     private final String basePath = PropertiesUtil.get("image.base.url");
 
@@ -51,6 +50,7 @@ public class ImageService {
                         StandardOpenOption.TRUNCATE_EXISTING);
         }
     }
+    
     /* Из-за того что может быть выброшено исключение применяем аннотацию */
     @SneakyThrows
     public Optional<InputStream> getImage(String imagePath){
