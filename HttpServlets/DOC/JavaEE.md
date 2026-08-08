@@ -1,0 +1,37 @@
+### Java EE
+
+Java EE или Java Enterprise Edition представляет платформу для
+создания корпоративных приложений на языке Java. Прежде всего
+это сфера веб-приложений и веб-сервисов.
+
+Java EE состоит из набора API и среды выполнения.
+
+**Некоторые из API:**
+- **Java Servlets** - представляют специальные модули, которые обрабатывают запросы от пользователей и отправляют результат обработки.
+- **JavaServer Pages (JSP)** - модули на стороне сервера, которые обрабатывают запросы. Удобны для генерации большого контента HTML. По сути представляют собой страницы с кодом HTML/JavaScript/CSS с вкраплениями кода на Java.
+- **Enterprise JavaBeans (EJB)** - классы, которые хранят бизнес-логику.
+- **Contexts and Dependency Injection (CDI)** - механизм для внедрения и управления зависимостями в другие объекты.
+- **JSON Processing (JSON-P)** - позволяет работать со строками JSON в Java.
+- **JSON Binding (JSON-B)** - функционал для сериализации и десериализации JSON в объекты Java.
+- **WebSocket** - позволяет интегрировать WebSocket в приложения на Java.
+- **Java Message Service (JMS)** - API для пересылки сообщений между двумя и более клиентами.
+- **Security API** - API для стандартизации и упрощения задач обеспечения безопасности в приложениях на Java.
+- **Java API for RESTful Web Services (JAX-RS)** - API для применения архитектуры REST в приложениях.
+- **JavaServer Faces (JSF)** - предоставляет возможности для создания пользовательского интерфейса на стороне сервера.
+
+Эти и ряд других API собственно и образуют то, что называется Java EE. Стоит
+отметить, что также в среде веб-разработки на Java популярна еще одна технология
+Spring. 
+
+Фреймворк Spring не является частью Java EE и используется как
+альтернативный подход к созданию веб-приложений на языке Java.
+
+---
+**Доп. материал:**
+- [JavaEE Samples Code](https://github.com/javaee-samples)
+- [Eclipse EE4J code example](https://github.com/eclipse-ee4j)
+- [Jakarta EE Tutorial](https://jakarta.ee/learn/docs/jakartaee-tutorial/current/intro/usingexamples/usingexamples.html)
+- [A Beginner’s Guide to Java EE: Build Your First Servlet-Based Web Application](https://medium.com/@n3d/a-beginners-guide-to-java-ee-build-your-first-servlet-based-web-application-fcfccb433c81)
+- [JavaEE examples java-ee-examples (0.0.1)](https://daggerok.github.io/java-ee-examples/)
+- [The Java EE 5 Tutorial](https://docs.oracle.com/javaee/5/tutorial/doc/bnaan.html)
+- [What is Java Enterprise Edition (Java EE)?](https://www.geeksforgeeks.org/java/java-enterprise-edition/)
