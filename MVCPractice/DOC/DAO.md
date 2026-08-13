@@ -31,3 +31,17 @@ DAO абстрагирует сущности системы и делает и�
 
 Набор методов не является завершённым, он зависит от конкретной системы. Фиктивный тип 'K' является
 ключом сущности, редкая таблица, описывающая сущность, не имеет первичного ключа.
+
+---
+**Доп. материал:**
+- [The DAO Pattern in Java](https://www.baeldung.com/java-dao-pattern)
+- [Data Access Object(DAO) Design Pattern](https://www.geeksforgeeks.org/system-design/data-access-object-pattern/)
+- [Data Access Object (from oracle.com)](https://www.oracle.com/java/technologies/data-access-object.html)
+- [Core J2EE Patterns - Data Access Object (from oracle.com)](https://www.oracle.com/java/technologies/dataaccessobject.html)
+- [Abstracting Data Access in Java With the DAO Pattern](https://foojay.io/today/abstracting-data-access-in-java-with-the-dao-pattern/)
+- [Demo-DAO-JDBC code (from GitHub)](https://github.com/pablomathdev/Demo-DAO-JDBC)
+- [Spring DAO Support](https://docs.spring.io/spring-framework/reference/data-access/dao.html)
+- [What is Data access object (DAO) in Java](https://stackoverflow.com/questions/19154202/what-is-data-access-object-dao-in-java)
+- [Data Access Object Pattern in Java: Streamlining Database Interaction](https://java-design-patterns.com/patterns/data-access-object/#programmatic-example-of-dao-pattern-in-java)
+- [DAO pattern in Java](https://ducmanhphan.github.io/2019-02-15-DAO-pattern-in-java/)
+- [Data Access Object Pattern](https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm)
