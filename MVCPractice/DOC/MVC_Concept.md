@@ -319,3 +319,14 @@ RequiredInterface.
 - [Model-View-Controller (from WIKI)](https://ru.wikipedia.org/wiki/Model-View-Controller)
 - [Знакомство с паттерном MVC (Model-View-Controller)](https://javarush.com/groups/posts/2536-chastjh-7-znakomstvo-s-patternom-mvc-model-view-controller)
 
+---
+**Доп. материалы:**
+- [An MVC Example with Servlets and JSP](https://www.baeldung.com/mvc-servlet-jsp)
+- [Model-View-Controller (MVC) (article from medium.com)](https://medium.com/@maheshmaddi92/6-1-model-view-controller-mvc-52e7112d5fae)
+- [Java SE Application Design With MVC (by ORACLE)](https://www.oracle.com/technical-resources/articles/javase/mvc.html)
+- [Подход MVC](https://javarush.com/quests/lectures/questservlets.level14.lecture02)
+- [Model-View-Controller Pattern in Java: Streamlining Java Web Development](https://java-design-patterns.com/patterns/model-view-controller/)
+- [Design Patterns - MVC Pattern (from tutorialspoint.com)](https://www.tutorialspoint.com/design_pattern/mvc_pattern.htm)
+- [Spring MVC — основные понятия и архитектура](https://highload.tech/spring-mvc/)
+- [Паттерн MVC. Реализация в Spring MVC (from GitHub)](https://github.com/KFalcon2022/lessons/blob/master/lessons/spring-framework/189/MVC%20pattern.%20Spring%20MVC%20implementation.md)
+- [Spring MVC — основные принципы](https://habr.com/ru/articles/336816/)
