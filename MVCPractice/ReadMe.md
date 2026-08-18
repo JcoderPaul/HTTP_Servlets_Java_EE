@@ -5,9 +5,10 @@
 - [lib](https://github.com/JcoderPaul/HTTP_Servlets_Java_EE/tree/master/MVCPractice/lib) - файлы сторонних библиотек: lombok, postgresql - коннектор и библиотека servlet-api;
 - [resources](https://github.com/JcoderPaul/HTTP_Servlets_Java_EE/tree/master/MVCPractice/resources) - папка ресурсов (в данном примере содержит только файл свойств);
 
+---
 ### Часть 1 - Архитектурный подход MVC
 
-- [src/AirportSimulator/](https://github.com/JcoderPaul/HTTP_Servlets_Java_EE/tree/master/MVCPractice/src/AirportSimulator) - основные модули программы (web-приложения) демонстрирующей принципы MVC:
+- [src/AirportSimulator/](../HTTP_Servlets_Java_EE/tree/master/MVCPractice/src/AirportSimulator) - основные модули программы (web-приложения) демонстрирующей принципы MVC:
 
     - [DAO](https://github.com/JcoderPaul/HTTP_Servlets_Java_EE/tree/master/MVCPractice/src/AirportSimulator/DAO) - папка содержит DAO-интерфейс и наши DAO классы, которые реализуют принципы CRUD: Create - создание, Read - чтение, Update - обновление, Delete - удаление;
     - [DTO](https://github.com/JcoderPaul/HTTP_Servlets_Java_EE/tree/master/MVCPractice/src/AirportSimulator/DTO) - папка содержит наши Data Transfer Object (DTO) классы (служат для передачи данных с одного слоя приложения на другой);
@@ -31,8 +32,11 @@
 
 3. В браузере после запуска TomCat набираем http://localhost:8080/ и выбираем сервлет /flights как стартовый.
 
-Графическую структуру архитектурного подхода MVC по принципу которого было выстроено данное приложение можно посмотреть на [MVC_Chart_with_comment.jpeg](https://github.com/JcoderPaul/HTTP_Servlets_Java_EE/blob/master/MVCPractice/DOC/MVC_Chart_with_comment.jpeg)
+Графическую структуру архитектурного подхода MVC по принципу которого было выстроено данное приложение можно посмотреть на 
 
+![MVC_Chart_with_comment.jpeg](../MVCPractice/DOC/MVC_Chart_with_comment.jpeg)
+
+---
 ### Часть 2 - Перенаправление запросов (Request Redirect) и Cookies, Session, Attributes
 
 - [DTO/UserDto.java](https://github.com/JcoderPaul/HTTP_Servlets_Java_EE/blob/master/MVCPractice/src/AirportSimulator/DTO/UserDto.java) - небольшой пример использования Lombok;
