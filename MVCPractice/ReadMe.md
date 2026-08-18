@@ -1,14 +1,14 @@
 ### Вспомогательные папки для всех разделов:
 
-- [BASE](https://github.com/JcoderPaul/HTTP_Servlets_Java_EE/tree/master/MVCPractice/BASE) - SQL скрипты для создания и заполнения базы данных;
-- [DOC](https://github.com/JcoderPaul/HTTP_Servlets_Java_EE/tree/master/MVCPractice/DOC) - описание концепции MVC в txt, jpg и png файлах (документация Lombok кратко, с примерами);
-- [lib](https://github.com/JcoderPaul/HTTP_Servlets_Java_EE/tree/master/MVCPractice/lib) - файлы сторонних библиотек: lombok, postgresql - коннектор и библиотека servlet-api;
-- [resources](https://github.com/JcoderPaul/HTTP_Servlets_Java_EE/tree/master/MVCPractice/resources) - папка ресурсов (в данном примере содержит только файл свойств);
+- [BASE](../MVCPractice/BASE) - SQL скрипты для создания и заполнения базы данных;
+- [DOC](../MVCPractice/DOC) - описание концепции MVC в txt, jpg и png файлах (документация Lombok кратко, с примерами);
+- [lib](../MVCPractice/lib) - файлы сторонних библиотек: lombok, postgresql - коннектор и библиотека servlet-api;
+- [resources](../MVCPractice/resources) - папка ресурсов (в данном примере содержит только файл свойств);
 
 ---
 ### Часть 1 - Архитектурный подход MVC
 
-- [src/AirportSimulator/](../HTTP_Servlets_Java_EE/tree/master/MVCPractice/src/AirportSimulator) - основные модули программы (web-приложения) демонстрирующей принципы MVC:
+- [src/AirportSimulator/](../MVCPractice/src/AirportSimulator) - основные модули программы (web-приложения) демонстрирующей принципы MVC:
 
     - [DAO](https://github.com/JcoderPaul/HTTP_Servlets_Java_EE/tree/master/MVCPractice/src/AirportSimulator/DAO) - папка содержит DAO-интерфейс и наши DAO классы, которые реализуют принципы CRUD: Create - создание, Read - чтение, Update - обновление, Delete - удаление;
     - [DTO](https://github.com/JcoderPaul/HTTP_Servlets_Java_EE/tree/master/MVCPractice/src/AirportSimulator/DTO) - папка содержит наши Data Transfer Object (DTO) классы (служат для передачи данных с одного слоя приложения на другой);
