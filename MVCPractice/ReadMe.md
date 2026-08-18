@@ -112,21 +112,44 @@ SQL скрипт находится во вспомогательной папк
 
 ---
 **Доп. материалы:**
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
+- [Архитектурный паттерн MVC](https://doka.guide/tools/architecture-mvc/)
+- [Знакомство с архитектурой MVC](https://javarush.com/quests/lectures/questservlets.level14.lecture02)
+- [MVC](https://javarush.com/quests/lectures/questcollections.level06.lecture01)
+- [Паттерн MVC в веб-разработке на Java](https://www.codorbits.com/course/mvc-pattern-in-java/)
+
+---
+- [Java Servlets: Understanding Sessions, Cookies, and URL Rewriting](https://prajwal018.medium.com/java-servlets-understanding-sessions-cookies-and-url-rewriting-ee866527601e)
+- [Handling Cookies and a Session in a Java Servlet](https://www.baeldung.com/java-servlet-cookies-session)
+- [Servlet: Request, Response, and Session](https://www.geeksforgeeks.org/advance-java/servlet-request-response-and-session/)
+- [Session Management in Java - HttpServlet, Cookies, URL Rewriting](https://www.digitalocean.com/community/tutorials/java-session-management-servlet-httpsession-url-rewriting)
+- [Servlet Session Management and Redirection](https://medium.com/@meowmbaikar/servlet-session-management-and-redirection-0497c5e8b40a)
+- **[Internet Programming with Java Course (from nakov.com)](https://www.nakov.com/inetjava/lectures/part-3-webapps/InetJava-3.4-Servlet-lyfecycle-Sessions-Cookies.html)**
+
+---
+- [Introduction to JSP](https://www.geeksforgeeks.org/advance-java/introduction-to-jsp/)
+- [Guide to JavaServer Pages (JSP)](https://www.baeldung.com/jsp)
+- **[A Simple JSP Page Example (from ORACLE)](https://docs.oracle.com/cd/E19316-01/819-3669/6n5sg7b13/index.html)**
+- [Java Server Pages Architecture: An In-Depth Exploration](https://medium.com/@lktsdvd/java-server-pages-architecture-an-in-depth-exploration-b4d79d3f5172)
+- **[(BookJ) SP- Java Server Pages (by Johannes Kepler Universität Linz)](https://ssw.jku.at/Teaching/Lectures/Sem/2000/Leitenmueller/)**
+- [JSP Example Tutorial for Beginners](https://www.digitalocean.com/community/tutorials/jsp-example-tutorial-for-beginners)
+- **[(Book) Java Server Pages (JSP) and Servlets (by runestone.academy)](https://runestone.academy/ns/books/published/javajavajava/jsp-and-servlets.html)**
+- [JSP Architecture](https://www.geeksforgeeks.org/java/jsp-architecture/)
+- **[(All Tutorial) Java Server-side Programming Getting started with JSP by Examples (from www3.ntu.edu.sg)](https://www3.ntu.edu.sg/home/ehchua/programming/java/JSPByExample.html)**
+
+---
+- [JSTL - JSP Standard Tag Library](https://www.geeksforgeeks.org/advance-java/jstl-jsp-standard-tag-library/)
+- **[JavaServer Pages Standard Tag Library (from ORACLE)](https://docs.oracle.com/cd/E19316-01/819-3669/bnakc/index.html)**
+- [A Guide to the JSTL Library](https://www.baeldung.com/jstl)
+- [Advanced Java — JSTL](https://medium.com/@SachinPandeyOnline/advanced-java-jstl-67ef530090ec)
+- [JSTL Tutorial, JSTL Tags Example](https://www.digitalocean.com/community/tutorials/jstl-tutorial-jstl-tags-example)
+- **[JSP - Standard Tag Library (JSTL) Tutorial](https://www.tutorialspoint.com/jsp/jsp_standard_tag_library.htm)**
+- [The Role of Java Standard Tag Library- EL (JSTL-EL) in JSP](https://www.c-sharpcorner.com/article/the-role-of-java-standard-tag-library-el-jstl-el-in-jsp/)
+
+---
+- **[Servlet - Form](https://www.geeksforgeeks.org/java/servlet-form/)**
+- **[Form-Based Authentication with a Servlet](https://docs.oracle.com/cd/E19226-01/820-7627/bncby/index.html)**
+- **[https://docs.oracle.com/cd/E19226-01/820-7627/bncby/index.html](https://stackoverflow.com/questions/22689150/java-servlet-that-validates-an-html-form)**
+- [Java program to create a form and validate password using servlet](https://www.startertutorials.com/blog/java-program-to-create-a-form-and-validate-password-using-servlet.html)
+- [How to handle HTML form data with Java Servlet](https://www.codejava.net/java-ee/servlet/handling-html-form-data-with-java-servlet)
+- [Form Validation in JSP/Servlet](https://javawithnsk.netlify.app/learn/servlet-form-validation/)
+- [Spring MVC form validation with Java Validation API](http://javainsimpleway.com/spring-mvc-form-validation-with-java-validation-api/)
