@@ -42,7 +42,10 @@
 - [DTO/UserDto.java](../MVCPractice/src/AirportSimulator/DTO/UserDto.java) - небольшой пример использования Lombok;
 - [PartTwo/CookiesServlet](../MVCPractice/src/PartTwo/CookiesServlet/CookiesServlet.java) - краткий пример работы с cookies;
 - [PartTwo/SessionServlet](../MVCPractice/src/PartTwo/SessionServlet/SessionServlet.java) - краткий пример работы с методами запроса, и демонстрация работы с сессией;
-- [PartTwo/AttributeServlet](../MVCPractice/src/PartTwo/AttributeServlet/SessionAttribute.java) - пример работы с атрибутами, использование класса UserDto.java в качестве атрибута;
+- [PartTwo/AttributeServlet](../MVCPractice/src/PartTwo/AttributeServlet/SessionAttribute.java) - пример работы с атрибутами, использование класса UserDto.java в качестве атрибута см. схему ниже;
+
+![Attributes.jpg](../MVCPractice/DOC/Attributes.jpg)
+
 - [PartTwo/DispatcherServlet](../MVCPractice/src/PartTwo/DispatcherServlet) - бывают ситуации когда запрос (req) от клиента требует каких-то дополнительных манипуляций с ответом (resp) и тогда сервлет-диспетчер перенаправляет запрос на другой сервлет `req.getRequestDispatcher("/другой сервлет")` см.
 
 ![DispatcherServlet.jpg](../MVCPractice/DOC/DispatcherServlet.jpg)
