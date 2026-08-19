@@ -124,7 +124,7 @@ IANA (ищите «Тип: вариант»).
 **Примечание.** Хотя BCP 47 требует, чтобы значения полей были зарегистрированы в реестре языковых вложенных
 тегов IANA, класс Locale не предоставляет никаких функций проверки. Построитель только проверяет, удовлетворяет 
 ли отдельное поле синтаксическому требованию (правильно ли оно сформировано), но не проверяет само значение. 
-Дополнительные сведения см. в разделе [Locale.Builder](https://docs.oracle.com/javase/8/docs/api/java/util/Locale.Builder.html).
+Дополнительные сведения см. [Locale.Builder](https://docs.oracle.com/javase/8/docs/api/java/util/Locale.Builder.html).
 
 ---
 #### Unicode locale /языковое расширение
@@ -173,7 +173,7 @@ getExtension(UNICODE_LOCALE_EXTENSION) вернет строку, предста
 
 Эти конструкторы позволяют вам создать объект Locale с языком, страной и вариантом, но вы не можете указать сценарий или расширения.
 
-**3. Фабрияные методы (Factory Methods)** - Метод forLanguageTag(java.lang.String) создает объект Locale для правильно сформированного языкового тега BCP 47.
+**3. Фабричные методы (Factory Methods)** - Метод forLanguageTag(java.lang.String) создает объект Locale для правильно сформированного языкового тега BCP 47.
 
 **4. Константы локали - Класс Locale предоставляет ряд удобных констант**, которые можно использовать для создания объектов Locale для часто используемых локалей. Например, следующий код создает объект Locale для США: Locale.US
 
@@ -185,14 +185,14 @@ getExtension(UNICODE_LOCALE_EXTENSION) вернет строку, предста
 конкретным предпочтениям каждого пользователя. Обратите внимание, что термин «тег языка» используется
 взаимозаменяемо с «локалью» в этой документации по сопоставлению локали.
 
-Для сопоставления предпочтительных локалей пользователя с набором языковых тегов RFC 4647 «Сопоставление
-языковых тегов» определяет два механизма: фильтрацию и поиск. Фильтрация используется для получения всех
+Для сопоставления предпочтительных локалей пользователя с набором языковых тегов [RFC 4647 «Сопоставление
+языковых тегов»](https://datatracker.ietf.org/doc/html/rfc4647) определяет два механизма: фильтрацию и поиск. Фильтрация используется для получения всех
 совпадающих локалей, а поиск — для выбора наиболее подходящей локали. Сопоставление выполняется без учета
 регистра. Эти механизмы сопоставления описаны в следующих разделах.
 
 Предпочтение пользователя называется списком языковых приоритетов и выражается в виде списка языковых
 диапазонов. Синтаксически существует два типа языковых диапазонов: базовый и расширенный. Дополнительные
-сведения см. в разделе Locale.LanguageRange.
+сведения см. класс [Locale.LanguageRange](https://docs.oracle.com/javase/8/docs/api/java/util/Locale.LanguageRange.html).
 
 ---
 #### Фильтрация
@@ -209,9 +209,10 @@ getExtension(UNICODE_LOCALE_EXTENSION) вернет строку, предста
 разные результаты в зависимости от того, какие языковые диапазоны включены в данный список языковых
 приоритетов.
 
-Locale.FilteringMode — это параметр, указывающий, как должна выполняться фильтрация.
+[Locale.FilteringMode](https://docs.oracle.com/javase/8/docs/api/java/util/Locale.FilteringMode.html) — это параметр, указывающий, как должна выполняться фильтрация.
 
-*** Поиск локали ***
+---
+#### Поиск локали
 
 Операция поиска возвращает наиболее подходящие языковые теги. Он определен в RFC 4647 следующим образом:
 «В отличие от фильтрации, каждый языковой диапазон представляет наиболее конкретный тег, который является
@@ -234,10 +235,10 @@ Locale.FilteringMode — это параметр, указывающий, как
 «*» — это специальный языковой диапазон, который игнорируется при поиске.
 
 Если несколько языковых тегов совпадают в результате вложенного тега '*', включенного в языковой диапазон,
-первый совпадающий языковой тег, возвращенный Iterator над набором языковых тегов, рассматривается как
-наиболее подходящий.
+первый совпадающий языковой тег, возвращенный [Iterator](https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html) над [набором языковых тегов](https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html), рассматривается как наиболее подходящий.
 
-*** Использование локали ***
+---
+#### Использование локали
 
 После того, как вы создали Locale, вы можете запросить у него информацию о себе. Используйте getCountry
 для получения кода страны (или региона) и getLanguage для получения кода языка. Вы можете использовать
@@ -252,25 +253,25 @@ getDisplayCountry, чтобы получить название страны, п
 как NumberFormat, имеют несколько удобных методов для создания объекта по умолчанию этого типа. Например,
 класс NumberFormat предоставляет эти три удобных метода для создания объекта NumberFormat по умолчанию:
 
-*****************************************************************************************************************
-     NumberFormat.getInstance()
-     NumberFormat.getCurrencyInstance()
-     NumberFormat.getPercentInstance()
-*****************************************************************************************************************
+```
+  NumberFormat.getInstance()
+  NumberFormat.getCurrencyInstance()
+  NumberFormat.getPercentInstance()
+```
 
-Каждый из этих методов имеет два варианта; один с явной локалью и один без; последний использует локаль
-FORMAT по умолчанию:
+Каждый из этих методов имеет два варианта; один с явной локалью и один без; последний использует локаль [FORMAT](https://docs.oracle.com/javase/8/docs/api/java/util/Locale.Category.html#FORMAT) по умолчанию:
 
-*****************************************************************************************************************
-          NumberFormat.getInstance(myLocale)
-          NumberFormat.getCurrencyInstance(myLocale)
-          NumberFormat.getPercentInstance(myLocale)
-*****************************************************************************************************************
+```
+  NumberFormat.getInstance(myLocale)
+  NumberFormat.getCurrencyInstance(myLocale)
+  NumberFormat.getPercentInstance(myLocale)
+```
 
 Locale — это механизм для определения типа объекта (NumberFormat), который вы хотели бы получить.
 Locale — это всего лишь механизм для идентификации объектов, а не контейнер для самих объектов.
 
-*** Совместимость ***
+---
+#### Совместимость
 
 Чтобы поддерживать совместимость с существующим использованием, конструкторы Locale сохраняют свое поведение
 до версии Java Runtime Environment 1.7. То же самое в значительной степени верно для метода toString. Таким
@@ -290,7 +291,8 @@ Locale — это всего лишь механизм для идентифик
 использовать API forLanguageTag и Locale.Builder. Клиенты, которым требуется строковое представление полной
 локали, могут всегда полагаться на toLanguageTag для этой цели.
 
-*** Особые случаи ***
+---
+#### Особые случаи
 
 По соображениям совместимости два несоответствующих языковых стандарта рассматриваются как особые случаи.
 Это ja_JP_JP и th_TH_TH. Они неправильно сформированы в BCP 47, поскольку варианты слишком короткие. Чтобы
@@ -308,14 +310,16 @@ Java использовала th_TH_TH для представления тай�
 (для «числа») и значение thai. При вызове конструктора Locale с аргументами "th", "TH", "TH" автоматически
 добавляется расширение "u-nu-thai".
 
-*** Сериализация ***
+---
+#### Сериализация
 
 Во время сериализации writeObject записывает в выходной поток все поля, включая расширения.
 
-Во время десериализации readResolve добавляет расширения, как описано в разделе «Особые случаи», только для
+Во время десериализации readResolve добавляет расширения, как описано в разделе [«Особые случаи»](https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html#special_cases_constructor), только для
 двух случаев th_TH_TH и ja_JP_JP.
 
-*** Устаревшие языковые коды ***
+---
+#### Устаревшие языковые коды
 
 Конструктор Locale всегда преобразовывал коды трех языков в их более ранние, устаревшие формы:
 он сопоставляется с iw, yi сопоставляется с ji, а id сопоставляется с in. Это по-прежнему имеет
@@ -326,9 +330,10 @@ API, добавленные в версии 1.7, сопоставляют ста
 языковых тегов BCP 47 (чтобы toLanguageTag отражал новый). Это сохраняет эквивалентность между
 Locales независимо от того, какой код или API используется для их создания. Механизм поиска пакета
 ресурсов по умолчанию в Java также реализует это сопоставление, поэтому ресурсы могут быть названы
-с использованием любого соглашения, см. ResourceBundle.Control.
+с использованием любого соглашения, см. [ResourceBundle.Control](https://docs.oracle.com/javase/8/docs/api/java/util/ResourceBundle.Control.html).
 
-*** Трехбуквенный код языка/страны (региона) ***
+---
+#### Трехбуквенный код языка/страны (региона) ***
 
 Конструкторы Locale всегда указывали, что параметры языка и страны имеют длину два символа, хотя на
 практике они принимали любую длину. Спецификация теперь смягчена, чтобы разрешить языковые коды от
@@ -337,200 +342,104 @@ Locales независимо от того, какой код или API исп�
 
 Для совместимости реализация по-прежнему не накладывает ограничение на длину.
 
--------------------------------------------------------------------------------------------
+---
+### Вложенные классы
 
-*** Вложенные классы ***
+`static class Locale.Builder` - Builder используется для создания экземпляров Locale из значений, настроенных сеттерами.
+`static class Locale.Category` - Перечисление для категорий локали.
+`static class Locale.FilteringMode` - Это перечисление предоставляет константы для выбора режима фильтрации для соответствия локали.
+`static class Locale.LanguageRange` - Этот класс выражает языковой диапазон, определенный в RFC 4647 «Сопоставление языковых тегов».
+                                    
+---
+### Поля
 
-static class Locale.Builder - Builder используется для создания экземпляров Locale из
-                              значений, настроенных сеттерами.
+`static Locale CANADA` - константа для страны.
+`static Locale CANADA_FRENCH` - константа для страны.
+`static Locale CHINA` - константа для страны.
+`static Locale CHINESE` - константа для языка.
+`static Locale ENGLISH` - константа для языка.
+`static Locale FRANCE` - константа для страны.
+`static Locale FRENCH` - константа для языка.
+`static Locale GERMAN` - константа для языка.
+`static Locale GERMANY` - константа для страны.
+`static Locale ITALIAN` - константа для языка.
+`static Locale ITALY` - константа для страны.
+`static Locale JAPAN` - константа для языка.
+`static Locale JAPANESE` - константа для языка.
+`static Locale KOREA` - константа для языка.
+`static Locale KOREAN` - константа для языка.
+`static Locale PRC` - константа для языка.
+`static char	PRIVATE_USE_EXTENSION` - Ключ для расширения для частного использования ("x").
+`static Locale ROOT` - константа для корневой локали
+`static Locale SIMPLIFIED_CHINESE` - константа для языка.
+`static Locale TAIWAN` - константа для языка.
+`static Locale TRADITIONAL_CHINESE` - константа для языка.
+`static Locale UK` - константа для языка.
+`static char	UNICODE_LOCALE_EXTENSION` - Ключ для расширения локали Unicode ('u').
+`static Locale US` - константа для языка.
 
-static class Locale.Category - Перечисление для категорий локали.
+---
+### Конструкторы
 
-static class Locale.FilteringMode - Это перечисление предоставляет константы для выбора
-                                    режима фильтрации для соответствия локали.
+`Locale(String language)` - Создает локаль из кода языка.
+`Locale(String language, String country)` - Создайте локаль из языка и страны.
+`Locale(String language, String country, String variant)` - Создайте языковой стандарт из языка, страны и варианта.
 
-static class Locale.LanguageRange - Этот класс выражает языковой диапазон, определенный
-                                    в RFC 4647 «Сопоставление языковых тегов».
--------------------------------------------------------------------------------------------
+---
+### Методы
 
-*** Поля ***
+`Object clone()` - Переопределяет возможность клонирования.
+`boolean	equals(Object obj)` - Возвращает true, если этот Locale равен другому объекту.
+`static List<Locale>	filter(List<Locale.LanguageRange> priorityList, Collection<Locale> locales)` - Возвращает список совпадающих Locale экземпляров, используя механизм фильтрации, определенный в RFC 4647.
+`static List<Locale>	filter(List<Locale.LanguageRange> priorityList, Collection<Locale> locales, Locale.FilteringMode mode)` - Возвращает список совпадающих Locale экземпляров, используя механизм фильтрации, определенный в RFC 4647.
+`static List<String>	filterTags(List<Locale.LanguageRange> priorityList, Collection<String> tags)` - Возвращает список совпадающих языковых тегов, используя базовый механизм фильтрации, определенный в RFC 4647.
+`static List<String>	filterTags(List<Locale.LanguageRange> priorityList, Collection<String> tags, Locale.FilteringMode mode)` - Возвращает список совпадающих языковых тегов, используя базовый механизм фильтрации, определенный в RFC 4647.
+`static Locale forLanguageTag(String languageTag)` - Возвращает языковой стандарт для указанной строки языкового тега IETF BCP 47.
+`static Locale[]	getAvailableLocales()` - Возвращает массив всех установленных локалей.
+`String getCountry()` - Возвращает код страны/региона для данной локали, который должен быть пустой строкой, двухбуквенным кодом ISO 3166 в верхнем регистре или трехзначным кодом UN M.49.
+`static Locale getDefault()` - Получает текущее значение локали по умолчанию для данного экземпляра виртуальной машины Java.
+`static Locale getDefault(Locale.Category category)` - Получает текущее значение языкового стандарта по умолчанию для указанной категории для этого экземпляра виртуальной машины Java.
+`String getDisplayCountry()` - Возвращает имя страны региона, подходящее для отображения пользователю.
+`String getDisplayCountry(Locale inLocale)` - Возвращает имя страны региона, подходящее для отображения пользователю.
+`String getDisplayLanguage()` - Возвращает имя языка локали, подходящее для отображения пользователю.
+`String getDisplayLanguage(Locale inLocale)` - Возвращает имя языка локали, подходящее для отображения пользователю.
+`String getDisplayName()` - Возвращает имя языкового стандарта, подходящее для отображения пользователю.
+`String getDisplayName(Locale inLocale)` - Возвращает имя языкового стандарта, подходящее для отображения пользователю.
+`String getDisplayScript()` - Возвращает имя сценария локали, подходящее для отображения пользователю.
+`String getDisplayScript(Locale inLocale)` - Возвращает имя сценария локали, подходящее для отображения пользователю.
+`String getDisplayVariant()` - Возвращает имя для кода варианта локали, которое подходит для отображения пользователю.
+`String getDisplayVariant(Locale inLocale)` - Возвращает имя для кода варианта локали, которое подходит для отображения пользователю.
+`String getExtension(char key)` - Возвращает значение расширения (или частного использования), связанное с указанным ключом, или null, если расширение не связано с ключом.
+`Set<Character> getExtensionKeys()` - Возвращает набор ключей расширения, связанных с этой локалью, или пустой набор, если у него нет расширений.
+`String getISO3Country()` - Возвращает трехбуквенное сокращение для страны этого языкового стандарта.
+`String getISO3Language()` - Возвращает трехбуквенную аббревиатуру языка данной локали.
+`static String[]	getISOCountries()` - Возвращает список всех двухбуквенных кодов стран, определенных в ISO 3166.
+`static String[]	getISOLanguages()` - Возвращает список всех двухбуквенных кодов языков, определенных в ISO 639.
+`String getLanguage()` - Возвращает код языка этого Locale.
+`String getScript()` - Возвращает скрипт для этой локали, который должен быть либо пустой строкой, либо 4-буквенным кодом скрипта ISO 15924.
+`Set<String>	getUnicodeLocaleAttributes()` - Возвращает набор атрибутов локали Unicode, связанных с этой локалью, или пустой набор, если у него нет атрибутов.
+`Set<String> getUnicodeLocaleKeys()` - Возвращает набор ключей локали Unicode, определенных этой локалью, или пустой набор, если эта локаль не имеет их.
+`String getUnicodeLocaleType(String key)` - Возвращает тип локали Unicode, связанный с указанным ключом локали Unicode для этой локали.
+`String getVariant()` - Возвращает код варианта для этой локали.
+`boolean	hasExtensions()` - Возвращает, true если у этого Localeесть какие-либо расширения .
+`int	hashCode()` - Переопределить хэш-код.
+`static Locale lookup(List<Locale.LanguageRange> priorityList, Collection<Locale> locales)` - Возвращает Locale экземпляр наиболее подходящего языкового тега, используя механизм поиска, определенный в RFC 4647.
+`static String lookupTag(List<Locale.LanguageRange> priorityList, Collection<String> tags)` - Возвращает наиболее подходящий языковой тег, используя механизм поиска, определенный в RFC 4647.
+`static void	setDefault(Locale.Category category, Locale newLocale)` - Задает локаль по умолчанию для указанной категории для этого экземпляра виртуальной машины Java.
+`static void	setDefault(Locale newLocale)` - Задает локаль по умолчанию для этого экземпляра виртуальной машины Java.
+`Locale stripExtensions()` - Возвращает копию this Localeбез расширений.
+`String toLanguageTag()` - Возвращает правильно сформированный языковой тег IETF BCP 47, представляющий эту локаль.
+`String toString()` - Возвращает строковое представление этого Locale объекта, состоящее из языка, страны, варианта, скрипта и расширений, как показано ниже: язык + "_" + страна + "_" + (вариант + "_#" | "#") - + скрипт + "-" + расширения Язык всегда указывается в нижнем регистре, страна всегда в верхнем регистре, сценарий всегда в заголовке, а расширения всегда в нижнем регистре.
 
-static Locale CANADA - константа для страны.
-static Locale CANADA_FRENCH - константа для страны.
-static Locale CHINA - константа для страны.
-static Locale CHINESE - константа для языка.
-static Locale ENGLISH - константа для языка.
-static Locale FRANCE - константа для страны.
-static Locale FRENCH - константа для языка.
-static Locale GERMAN - константа для языка.
-static Locale GERMANY - константа для страны.
-static Locale ITALIAN - константа для языка.
-static Locale ITALY - константа для страны.
-static Locale JAPAN - константа для языка.
-static Locale JAPANESE - константа для языка.
-static Locale KOREA - константа для языка.
-static Locale KOREAN - константа для языка.
-static Locale PRC - константа для языка.
-static char	PRIVATE_USE_EXTENSION - Ключ для расширения для частного использования ("x").
-static Locale ROOT - константа для корневой локали
-static Locale SIMPLIFIED_CHINESE - константа для языка.
-static Locale TAIWAN - константа для языка.
-static Locale TRADITIONAL_CHINESE - константа для языка.
-static Locale UK - константа для языка.
-static char	UNICODE_LOCALE_EXTENSION - Ключ для расширения локали Unicode ('u').
-static Locale US - константа для языка.
--------------------------------------------------------------------------------------------
+---
+**См. более подробно исходник (ENG):** https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html
 
-*** Конструкторы ***
-
-Locale(String language) - Создайте локаль из кода языка.
-
-Locale(String language,
-       String country) - Создайте локаль из языка и страны.
-
-Locale(String language,
-       String country,
-       String variant) - Создайте языковой стандарт из языка, страны и варианта.
--------------------------------------------------------------------------------------------
-
-*** Методы ***
-
-Object clone() - Переопределяет возможность клонирования.
-
-boolean	equals(Object obj) - Возвращает true, если этот Locale равен другому объекту.
-
-static List<Locale>	filter(List<Locale.LanguageRange> priorityList,
-                           Collection<Locale> locales) - Возвращает список совпадающих Locale экземпляров,
-                                                         используя механизм фильтрации, определенный в
-                                                         RFC 4647.
-
-static List<Locale>	filter(List<Locale.LanguageRange> priorityList,
-                           Collection<Locale> locales,
-                           Locale.FilteringMode mode) - Возвращает список совпадающих Locale экземпляров,
-                                                        используя механизм фильтрации, определенный в
-                                                        RFC 4647.
-
-static List<String>	filterTags(List<Locale.LanguageRange> priorityList,
-                               Collection<String> tags) - Возвращает список совпадающих языковых тегов,
-                                                          используя базовый механизм фильтрации, определенный
-                                                          в RFC 4647.
-
-static List<String>	filterTags(List<Locale.LanguageRange> priorityList,
-                               Collection<String> tags,
-                               Locale.FilteringMode mode) - Возвращает список совпадающих языковых тегов,
-                                                            используя базовый механизм фильтрации,
-                                                            определенный в RFC 4647.
-
-static Locale forLanguageTag(String languageTag) - Возвращает языковой стандарт для указанной строки
-                                                   языкового тега IETF BCP 47.
-
-static Locale[]	getAvailableLocales() - Возвращает массив всех установленных локалей.
-
-String getCountry() - Возвращает код страны/региона для данной локали, который должен быть пустой строкой,
-                      двухбуквенным кодом ISO 3166 в верхнем регистре или трехзначным кодом UN M.49.
-
-static Locale getDefault() - Получает текущее значение локали по умолчанию для данного экземпляра
-                             виртуальной машины Java.
-
-static Locale getDefault(Locale.Category category) - Получает текущее значение языкового стандарта
-                                                     по умолчанию для указанной категории для этого
-                                                     экземпляра виртуальной машины Java.
-
-String getDisplayCountry() - Возвращает имя страны региона, подходящее для
-                             отображения пользователю.
-
-String getDisplayCountry(Locale inLocale) - Возвращает имя страны региона, подходящее
-                                            для отображения пользователю.
-
-String getDisplayLanguage() - Возвращает имя языка локали, подходящее
-                              для отображения пользователю.
-
-String getDisplayLanguage(Locale inLocale) - Возвращает имя языка локали, подходящее
-                                             для отображения пользователю.
-
-String getDisplayName() - Возвращает имя языкового стандарта, подходящее для
-                          отображения пользователю.
-
-String getDisplayName(Locale inLocale) - Возвращает имя языкового стандарта, подходящее
-                                         для отображения пользователю.
-
-String getDisplayScript() - Возвращает имя сценария локали, подходящее для
-                            отображения пользователю.
-
-String getDisplayScript(Locale inLocale) - Возвращает имя сценария локали, подходящее для
-                                           отображения пользователю.
-
-String getDisplayVariant() - Возвращает имя для кода варианта локали, которое подходит для
-                             отображения пользователю.
-
-String getDisplayVariant(Locale inLocale) - Возвращает имя для кода варианта локали, которое
-                                            подходит для отображения пользователю.
-
-String getExtension(char key) - Возвращает значение расширения (или частного использования),
-                                связанное с указанным ключом, или null, если расширение не
-                                связано с ключом.
-
-Set<Character> getExtensionKeys() - Возвращает набор ключей расширения, связанных с этой локалью,
-                                    или пустой набор, если у него нет расширений.
-
-String getISO3Country() - Возвращает трехбуквенное сокращение для страны этого языкового стандарта.
-
-String getISO3Language() - Возвращает трехбуквенную аббревиатуру языка данной локали.
-
-static String[]	getISOCountries() - Возвращает список всех двухбуквенных кодов стран,
-                                    определенных в ISO 3166.
-
-static String[]	getISOLanguages() - Возвращает список всех двухбуквенных кодов языков,
-                                    определенных в ISO 639.
-
-String getLanguage() - Возвращает код языка этого Locale.
-
-String getScript() - Возвращает скрипт для этой локали, который должен быть либо пустой строкой,
-                     либо 4-буквенным кодом скрипта ISO 15924.
-
-Set<String>	getUnicodeLocaleAttributes() - Возвращает набор атрибутов локали Unicode, связанных
-                                           с этой локалью, или пустой набор, если у него нет атрибутов.
-
-Set<String>	getUnicodeLocaleKeys() - Возвращает набор ключей локали Unicode, определенных
-                                     этой локалью, или пустой набор, если эта локаль не имеет их.
-
-String getUnicodeLocaleType(String key) - Возвращает тип локали Unicode, связанный с
-                                          указанным ключом локали Unicode для этой локали.
-
-String getVariant() - Возвращает код варианта для этой локали.
-
-boolean	hasExtensions() - Возвращает, true если у этого Localeесть какие-либо расширения .
-
-int	hashCode() - Переопределить хэш-код.
-
-static Locale lookup(List<Locale.LanguageRange> priorityList,
-                     Collection<Locale> locales) - Возвращает Locale экземпляр наиболее подходящего
-                                                   языкового тега, используя механизм поиска, определенный
-                                                   в RFC 4647.
-
-static String lookupTag(List<Locale.LanguageRange> priorityList,
-                        Collection<String> tags) - Возвращает наиболее подходящий языковой тег, используя
-                                                   механизм поиска, определенный в RFC 4647.
-
-static void	setDefault(Locale.Category category,
-                       Locale newLocale) - Задает локаль по умолчанию для указанной
-                                           категории для этого экземпляра виртуальной
-                                           машины Java.
-
-static void	setDefault(Locale newLocale) - Задает локаль по умолчанию для этого экземпляра
-                                           виртуальной машины Java.
-
-Locale stripExtensions() - Возвращает копию this Localeбез расширений .
-
-String toLanguageTag() - Возвращает правильно сформированный языковой тег IETF BCP 47, представляющий
-                         эту локаль.
-
-String toString() - Возвращает строковое представление этого Locale объекта, состоящее из языка, страны,
-                    варианта, скрипта и расширений, как показано ниже: язык + "_" + страна + "_" +
-                    (вариант + "_#" | "#") - + скрипт + "-" + расширения Язык всегда указывается в нижнем
-                    регистре, страна всегда в верхнем регистре, сценарий всегда в заголовке, а расширения
-                    всегда в нижнем регистре.
-
-************************************************************************************************************
-См. более подробно: https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html
-************************************************************************************************************
+---
+**Доп. материал:**
+- [Creating a Locale (The ORACLE Java™ Tutorials)](https://docs.oracle.com/javase/tutorial/i18n/locale/create.html)
+- [Setting the Locale (The University of Auckland - Java™ Tutorials)](https://www.cs.auckland.ac.nz/references/java/java1.5/tutorial/i18n/locale/index.html)
+- [Internationalization with Java Locale](https://phrase.com/blog/posts/internationalization-with-java-locale/)
+- [Java.util.Locale Class in Java | Set 1 (from geeksforgeeks.org)](https://www.geeksforgeeks.org/java/java-util-locale-class-java-set-1/)
+- [Java.util.Locale Class in Java | Set 2 (from geeksforgeeks.org)](https://www.geeksforgeeks.org/java/java-util-locale-class-java-set-2/)
+- [Java’s Locale.getDefault() Method Explained](https://medium.com/@AlexanderObregon/javas-locale-getdefault-method-explained-65056f1dca91)
+- [Java Locale Class](https://codegym.cc/groups/posts/java-locale-class)
