@@ -1,18 +1,32 @@
-****** Class Locale ******
+- [См. первоисточник: Class Locale](https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html)
 
+---
+### Class Locale
+
+```
 java.lang.Object
-java.util.Locale
+  java.util.Locale
+```
 
-Реализуемые интерфейсы: Serializable,
-                        Cloneable
--------------------------------------------------------------------------------------------
+**Реализуемые интерфейсы:** 
+- [Serializable](https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html), 
+- [Cloneable](https://docs.oracle.com/javase/8/docs/api/java/lang/Cloneable.html)
+
+```
 public final class Locale
                    extends Object
                    implements Cloneable, Serializable
--------------------------------------------------------------------------------------------
-См. так же: Locale.Builder, ResourceBundle, Format, NumberFormat, Collator, Serialized Form
--------------------------------------------------------------------------------------------
+```
 
+**См. так же:** 
+- [Locale.Builder](https://docs.oracle.com/javase/8/docs/api/java/util/Locale.Builder.html), 
+- [ResourceBundle](https://docs.oracle.com/javase/8/docs/api/java/util/ResourceBundle.html), 
+- [Format](https://docs.oracle.com/javase/8/docs/api/java/text/Format.html), 
+- [NumberFormat](https://docs.oracle.com/javase/8/docs/api/java/text/NumberFormat.html), 
+- [Collator](https://docs.oracle.com/javase/8/docs/api/java/text/Collator.html), 
+- [Serialized Form](https://docs.oracle.com/javase/8/docs/api/serialized-form.html#java.util.Locale)
+
+---
 Объект Locale представляет определенный географический, политический или культурный регион.
 Операция, для выполнения которой требуется локаль, называется зависимой от локали и использует
 локаль для настройки информации для пользователя.
