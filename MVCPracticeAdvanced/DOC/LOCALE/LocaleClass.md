@@ -443,3 +443,8 @@ Locales независимо от того, какой код или API исп�
 - [Java.util.Locale Class in Java | Set 2 (from geeksforgeeks.org)](https://www.geeksforgeeks.org/java/java-util-locale-class-java-set-2/)
 - [Java’s Locale.getDefault() Method Explained](https://medium.com/@AlexanderObregon/javas-locale-getdefault-method-explained-65056f1dca91)
 - [Java Locale Class](https://codegym.cc/groups/posts/java-locale-class)
+- [Java Locale Class](https://www.javaguides.net/2024/06/java-locale-class.html)
+- [What Are Locales and How Do I Use Them?](https://www.cis.upenn.edu/~bcpierce/courses/629/papers/Java-tutorial/intl/datamgmt/locales.html)
+- [How do I set the default locale in the JVM?](https://stackoverflow.com/questions/8809098/how-do-i-set-the-default-locale-in-the-jvm)
+- [Java Locale: A Comprehensive Guide](https://howtodoinjava.com/java/date-time/java-locale-api-examples/)
+- [Locale toLanguageTag() Method in Java with Examples](https://www.geeksforgeeks.org/java/locale-tolanguagetag-method-in-java-with-examples/)
