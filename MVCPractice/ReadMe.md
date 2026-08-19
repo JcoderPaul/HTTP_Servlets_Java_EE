@@ -45,7 +45,7 @@
 - [PartTwo/AttributeServlet](../MVCPractice/src/PartTwo/AttributeServlet/SessionAttribute.java) - пример работы с атрибутами, использование класса UserDto.java в качестве атрибута;
 - [PartTwo/DispatcherServlet](../MVCPractice/src/PartTwo/DispatcherServlet) - бывают ситуации когда запрос (req) от клиента требует каких-то дополнительных манипуляций с ответом (resp) и тогда сервлет-диспетчер перенаправляет запрос на другой сервлет `req.getRequestDispatcher("/другой сервлет")` см.
 
-![DispatcherServlet.jpg](../DOC/DispatcherServlet.jpg)
+![DispatcherServlet.jpg](../MVCPractice/DOC/DispatcherServlet.jpg)
 
 Который делает необходимую работу и формирует ответ клиенту, демонстрация трех типов перенаправления запросов (forward, include и redirect):
 
