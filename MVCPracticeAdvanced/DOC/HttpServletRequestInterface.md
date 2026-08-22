@@ -1,8 +1,9 @@
-- [См. исходник (ENG): HttpServletRequest](https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletRequest.html)
+- **[См. исходник (ENG): HttpServletRequest](https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletRequest.html)**
 
 ### Interface HttpServletRequest
 
 **Все родительские интерфейсы:** [ServletRequest](https://docs.oracle.com/javaee/7/api/javax/servlet/ServletRequest.html)
+
 **Все известные реализующие классы:** [HttpServletRequestWrapper](https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletRequestWrapper.html)
 
 ```
@@ -60,7 +61,7 @@
 **Методы, унаследованные [от интерфейса ServletRequest](https://docs.oracle.com/javaee/7/api/javax/servlet/ServletRequest.html):** getAsyncContext, getAttribute, getAttributeNames, getCharacterEncoding, getContentLength, getContentType, getDispatcherType, getInputStream, getLocalAddr, getLocale, getLocales, getLocalName, getLocalPort, getParameter, getParameterMap, getParameterNames, getParameterValues, getProtocol, getReader, getRealPath, getRemoteAddr, getRemoteHost, getRemotePort, getRequestDispatcher, getScheme, getServerName, getServerPort, getServletContext, isAsyncStarted, isAsyncSupported, isSecure, removeAttribute, setAttribute, setCharacterEncoding, startAsync, startAsync
 
 ---
-- [См. исходник (ENG): HttpServletRequest](https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletRequest.html)
+- **[См. исходник (ENG): HttpServletRequest](https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpServletRequest.html)**
 
 ---
 **См. доп. материал:**
