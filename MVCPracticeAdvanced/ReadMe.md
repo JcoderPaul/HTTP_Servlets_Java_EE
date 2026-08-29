@@ -1,9 +1,9 @@
 ### Вспомогательные папки для всех разделов:
 
-- [BASE](../HTTP_Servlets_Java_EE/tree/master/MVCPracticeAdvanced/BASE) - SQL скрипты для создания и заполнения базы данных;
-- [DOC](../HTTP_Servlets_Java_EE/tree/master/MVCPracticeAdvanced/DOC) - описания классов и интерфейсов используемых в данном проекте;
-- [lib](../HTTP_Servlets_Java_EE/tree/master/MVCPracticeAdvanced/lib) - файлы сторонних библиотек: lombok, postgresql - коннектор и библиотека servlet-api;
-- [resources](../HTTP_Servlets_Java_EE/tree/master/MVCPracticeAdvanced/resources) - папка ресурсов (в данном примере содержит только файл свойств);
+- [BASE](../MVCPracticeAdvanced/BASE) - SQL скрипты для создания и заполнения базы данных;
+- [DOC](../MVCPracticeAdvanced/DOC) - описания классов и интерфейсов используемых в данном проекте;
+- [lib](../MVCPracticeAdvanced/lib) - файлы сторонних библиотек: lombok, postgresql - коннектор и библиотека servlet-api;
+- [resources](../MVCPracticeAdvanced/resources) - папка ресурсов (в данном примере содержит только файл свойств);
 
 ### Часть 1 - Загрузка бинарного файла через форму регистрации на 'удаленный' сервер
 
