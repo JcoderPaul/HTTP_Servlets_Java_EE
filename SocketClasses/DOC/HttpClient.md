@@ -121,22 +121,19 @@ HttpRequest request = HttpRequest.newBuilder()
 
 ---
 **Более подробно см.**
-- [Class HttpClient](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html)
+- [Class HttpClient (java SE 25)](https://download.java.net/java/early_access/loom/docs/api/java.net.http/java/net/http/HttpClient.html)
+- [Class HttpClient (Java SE 11)](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html)
 - [Class HttpRequest](https://docs.oracle.com/en/java/javase/12/docs/api/java.net.http/java/net/http/HttpRequest.html)
 - [`Interface HttpResponse.BodyHandler<T>`](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpResponse.BodyHandler.html)
 
 ---
 **Доп. материалы:**
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
+- [Introduction to the Java HTTP Client (from OpenJDK.org)](https://openjdk.org/groups/net/httpclient/intro.html)
+- [HttpClient.java on GitHub](https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/sun/net/www/http/HttpClient.java)
+- [Exploring the New HTTP Client in Java](https://www.baeldung.com/java-9-http-client)
+- [Exploring Java HTTP Clients for Modern Web Applications](https://medium.com/@alxkm/exploring-java-http-clients-for-modern-web-applications-b9c991c70454)
+- [Java theory and practice: Explore the HTTP Client and WebSocket APIs (from IBM)](https://developer.ibm.com/tutorials/java-theory-and-practice-3/)
+- [What is the difference between CloseableHttpClient and HttpClient in Apache HttpClient API?](https://stackoverflow.com/questions/21574478/what-is-the-difference-between-closeablehttpclient-and-httpclient-in-apache-http)
+- [Apache HttpClient Series (short 'Tutorial' article)](https://www.baeldung.com/httpclient-series)
+- [Java HttpClient](https://jenkov.com/tutorials/java-networking/httpclient.html)
+- [Using the Java HTTP Client](https://www.vogella.com/tutorials/JavaHttpClient/article.html)
