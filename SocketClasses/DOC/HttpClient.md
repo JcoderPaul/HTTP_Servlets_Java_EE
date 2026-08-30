@@ -123,7 +123,7 @@ HttpRequest request = HttpRequest.newBuilder()
 **Более подробно см.**
 - [Class HttpClient](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html)
 - [Class HttpRequest](https://docs.oracle.com/en/java/javase/12/docs/api/java.net.http/java/net/http/HttpRequest.html)
-- [Interface HttpResponse.BodyHandler<T>](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpResponse.BodyHandler.html)
+- [`Interface HttpResponse.BodyHandler<T>`](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpResponse.BodyHandler.html)
 
 ---
 **Доп. материалы:**
