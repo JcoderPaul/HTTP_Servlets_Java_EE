@@ -11,15 +11,13 @@ public class ServerSocket
                 implements Closeable
 ```
 
-**Пакеты:** 
-- [java.lang.Object]()
-- [java.net.ServerSocket]()
+**Пакеты:** [java.net](https://docs.oracle.com/javase/8/docs/api/java/net/package-summary.html)
 
 **Все реализуемые интерфейсы:** 
-- [Closeable](),
-- [AutoCloseable]()
+- [Closeable](https://docs.oracle.com/javase/8/docs/api/java/io/Closeable.html),
+- [AutoCloseable](https://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html)
 
-**Известные подклассы:** [SSLServerSocket]()
+**Известные подклассы:** [SSLServerSocket](https://docs.oracle.com/javase/8/docs/api/javax/net/ssl/SSLServerSocket.html)
 
 Этот класс реализует серверные сокеты. Сокет сервера ожидает поступления
 запросов по сети. Он выполняет некоторую операцию на основе этого запроса,
