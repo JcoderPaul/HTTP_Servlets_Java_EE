@@ -177,8 +177,8 @@ public abstract class URLConnection
 
 Следующая программа HttpURLConnection подключается к URL-адресу, заданному в теле самой программы через конструктор. Похожие примеры
 можно найти в файлах описаниях:
-- [URLConnection_Methods.md](../DOC/URLConnection_Methods.txt)
-- [URLConnection_Read_Write.md](../DOC/URLConnection_Read_Write.txt)
+- [URLConnection_Methods.md](../DOC/URLConnection_Methods.md)
+- [URLConnection_Read_Write.md](../DOC/URLConnection_Read_Write.md)
 
 Если URL представляет ресурс HTTP, соединение преобразуется в HttpURL-соединение, и данные в ресурсе считываются по одной строке за раз.
 
