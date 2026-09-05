@@ -94,5 +94,21 @@
 
 В этой программе сначала:
 - устанавливается соединение по протоколу с сервером yandex.ru через HTTP порт - 80; 
-- атем в нем выводятся несколько значений из заголовков и извлекается содержимое.
+- затем в нем выводятся несколько значений из заголовков и извлекается содержимое;
+
 Ради интереса можно выполнить эту программу в режиме дебага, наблюдая результаты ее выполнения.
+
+---
+**Доп. материалы:**
+- [Class URLConnection (from ORACLE Java 8)](https://docs.oracle.com/javase/8/docs/api/java/net/URLConnection.html)
+- [Class URLConnection (from ORACLE Java 21](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/net/URLConnection.html)
+- [Особенности HttpUrlConnection из java.net](https://habr.com/ru/articles/459080/)
+- [How to use Java URLConnection and HttpURLConnection](https://www.codejava.net/java-se/networking/how-to-use-java-urlconnection-and-httpurlconnection)
+- [Обработка URL (from ProgLang.su - самоучители и докумментация)](https://proglang.su/java/url-processing)
+- [java.net.URLConnection Class in Java](https://www.geeksforgeeks.org/java/java-net-urlconnection-class-in-java/)
+- [Class java.net.URLConnection (from Princeton Engineering)](https://www.cs.princeton.edu/courses/archive/fall97/cs461/jdkdocs/api/java.net.URLConnection.html)
+- [Reading from and Writing to a URLConnection (from University of Pennsylvania)](https://www.cis.upenn.edu/~bcpierce/courses/629/papers/Java-tutorial/networking/urls/readingWriting.html)
+- [How to use java.net.URLConnection to fire and handle HTTP requests](https://stackoverflow.com/questions/2793150/how-to-use-java-net-urlconnection-to-fire-and-handle-http-requests)
+- [Java URLConnection Class](https://www.tpointtech.com/urlconnection-class)
+- [Create Connections with URLConnection](https://webfiles-sc1.blackbaud.com/files/support/helpfiles/infinitydevguide/content/sdk/java/cocreateaconnectionwithurlconnection.html)
+- [Java - URLConnection getContent(Class<?>[] classes)](https://www.tutorialspoint.com/java/urlconnection_getcontent_classes.htm)
